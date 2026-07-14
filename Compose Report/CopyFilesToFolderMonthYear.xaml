@@ -1,0 +1,395 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib"
+ xmlns:this="clr-namespace:"
+ xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities"
+ xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities"
+ xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities"
+ xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Year" Type="InArgument(x:Int32)" />
+    <x:Property Name="Month" Type="InArgument(x:Int32)" />
+    <x:Property Name="analiseMercadoFile" Type="OutArgument(ugdm:GDriveRemoteItem)" />
+    <x:Property Name="operacoesFile" Type="OutArgument(ugdm:GDriveRemoteItem)" />
+  </x:Members>
+  <this:Main.Year>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Main.Year>
+  <this:Main.Month>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Main.Month>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Sdk.Activities</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="356,732" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Default="[Nothing]" Name="exists" />
+      <Variable x:TypeArguments="x:Boolean" Default="[Nothing]" Name="exists_1" />
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="monthFolder" />
+      <Variable x:TypeArguments="x:String" Name="MonthFolderName" />
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="yearFolder" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Copy files to folder Month - Year" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence DisplayName="Find or Create Year folder" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <uga:FileFolderExistsConnections ConnectionAccountName="{x:Null}" AuthScopesInvalid="False" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="File or Folder Exists - Year" sap2010:WorkflowViewState.IdRef="FileFolderExistsConnections_1" Result="[exists]" UseConnectionService="True">
+          <uga:FileFolderExistsConnections.Item>
+            <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" InputMode="RelativePath" ParentId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ParentIdFriendlyName="planos mensais de investimento" ParentIdFullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" RelativePath="[Year.ToString]">
+              <ugam:DriveItemArgument.Backup>
+                <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="RelativePath">
+                  <usau:BackupSlot.BackupValues>
+                    <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                      <x:Null />
+                      <x:Null />
+                      <x:Null />
+                    </scg:List>
+                  </usau:BackupSlot.BackupValues>
+                </usau:BackupSlot>
+              </ugam:DriveItemArgument.Backup>
+              <ugam:DriveItemArgument.FullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.FullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:FileFolderExistsConnections.Item>
+        </uga:FileFolderExistsConnections>
+        <If Condition="[exists]" DisplayName="If - Year folder exists" sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Then>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <uga:GetFileFolderConnections BrowserFileFolderId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ExistingItem="{x:Null}" FileFolderFriendlyName="{x:Null}" ManualEntryFileFolderFullPath="{x:Null}" ManualEntryFileFolderId="{x:Null}" AuthScopesInvalid="False" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Get File or Folder - Year" FileFolderInputMode="RelativePath" sap2010:WorkflowViewState.IdRef="GetFileFolderConnections_1" ItemInputMode="RelativePath" ManualEntryFileFolderRelativePath="[Year.ToString]" ParentFileFolderFriendlyName="planos mensais de investimento" ParentFileFolderId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" Result="[yearFolder]" UseConnectionService="True">
+                <uga:GetFileFolderConnections.FileFolderIdBackup>
+                  <usau:BackupSlot x:TypeArguments="ugade:EDriveMode" StoredValue="{x:Null}">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="ugade:EDriveMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uga:GetFileFolderConnections.FileFolderIdBackup>
+                <uga:GetFileFolderConnections.Item>
+                  <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" InputMode="RelativePath" ParentId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ParentIdFriendlyName="planos mensais de investimento" ParentIdFullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" RelativePath="[Year.ToString]">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="RelativePath">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                            <InArgument x:TypeArguments="x:String">https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3</InArgument>
+                            <InArgument x:TypeArguments="x:String" />
+                            <InArgument x:TypeArguments="x:String">planos mensais de investimento</InArgument>
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                  </ugam:DriveItemArgument>
+                </uga:GetFileFolderConnections.Item>
+              </uga:GetFileFolderConnections>
+              <ui:LogMessage DisplayName="Log Message - Year folder already exists" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Year folder &quot; + Year.ToString + &quot; already exists&quot;]" />
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <uga:CreateFolderConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" FolderPath="{x:Null}" ManualEntryParentFolderId="{x:Null}" NewFolderDescription="{x:Null}" ParentFolderExisting="{x:Null}" AuthScopesInvalid="False" BrowserParentFolderFriendlyName="planos mensais de investimento" BrowserParentFolderId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConflictResolution="Fail" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Create Folder - Year" FolderInputMode="FolderName" sap2010:WorkflowViewState.IdRef="CreateFolderConnections_1" NewFolderName="[Year.ToString]" ParentFolderInputMode="Browse" Result="[yearFolder]" UseConnectionService="True">
+                <uga:CreateFolderConnections.FolderInputModeBackup>
+                  <usau:BackupSlot x:TypeArguments="ugade:ECreateFolderMode" StoredValue="FolderName">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="ugade:ECreateFolderMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uga:CreateFolderConnections.FolderInputModeBackup>
+                <uga:CreateFolderConnections.Item>
+                  <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="planos mensais de investimento" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" InputMode="Browse">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                    <ugam:DriveItemArgument.DriveId>
+                      <InArgument x:TypeArguments="x:String" />
+                    </ugam:DriveItemArgument.DriveId>
+                    <ugam:DriveItemArgument.ParentIdFullPathHint>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ugam:DriveItemArgument.ParentIdFullPathHint>
+                  </ugam:DriveItemArgument>
+                </uga:CreateFolderConnections.Item>
+              </uga:CreateFolderConnections>
+              <ui:LogMessage DisplayName="Log Message - Year folder was created" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Year folder &quot; + Year.ToString + &quot; was created&quot;]" />
+            </Sequence>
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Find or Create Month folder" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Assign DisplayName="Assign - Month Folder Name" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[MonthFolderName]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[New Dictionary(Of Integer, String) From {{1, "01 - Janeiro"}, {2, "02 - Fevereiro"}, {3, "03 - Março"}, {4, "04 - Abril"}, {5, "05 - Maio"}, {6, "06 - Junho"}, {7, "07 - Julho"}, {8, "08 - Agosto"}, {9, "09 - Setembro"}, {10, "10 - Outubro"}, {11, "11 - Novembro"}, {12, "12 - Dezembro"}}.GetValueOrDefault(Month, "Mês Inválido")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <uga:FileFolderExistsConnections ConnectionAccountName="{x:Null}" AuthScopesInvalid="False" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="File or Folder Exists - Month" sap2010:WorkflowViewState.IdRef="FileFolderExistsConnections_2" Result="[exists_1]" UseConnectionService="True">
+          <uga:FileFolderExistsConnections.Item>
+            <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" InputMode="RelativePath" ParentId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ParentIdFriendlyName="planos mensais de investimento" ParentIdFullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" RelativePath="[Path.combine(Year.ToString, MonthFolderName)]">
+              <ugam:DriveItemArgument.Backup>
+                <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="RelativePath">
+                  <usau:BackupSlot.BackupValues>
+                    <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                      <x:Null />
+                      <x:Null />
+                      <x:Null />
+                    </scg:List>
+                    <scg:List x:TypeArguments="x:Object" x:Key="RelativePath" Capacity="3">
+                      <InArgument x:TypeArguments="x:String">https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3</InArgument>
+                      <InArgument x:TypeArguments="x:String">planos mensais de investimento</InArgument>
+                      <InArgument x:TypeArguments="x:String">[Path.combine(Year.ToString, MonthFolderName)]</InArgument>
+                    </scg:List>
+                    <scg:List x:TypeArguments="x:Object" x:Key="FullPath" Capacity="1">
+                      <InArgument x:TypeArguments="x:String">[Path.Combine(year.ToString, MonthFolderName)]</InArgument>
+                    </scg:List>
+                  </usau:BackupSlot.BackupValues>
+                </usau:BackupSlot>
+              </ugam:DriveItemArgument.Backup>
+              <ugam:DriveItemArgument.FullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.FullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:FileFolderExistsConnections.Item>
+        </uga:FileFolderExistsConnections>
+        <If Condition="[exists_1]" DisplayName="If - Month folder exists" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <uga:GetFileFolderConnections BrowserFileFolderId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ExistingItem="{x:Null}" FileFolderFriendlyName="{x:Null}" ManualEntryFileFolderFullPath="{x:Null}" ManualEntryFileFolderId="{x:Null}" AuthScopesInvalid="False" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Get File or Folder - Month" FileFolderInputMode="RelativePath" sap2010:WorkflowViewState.IdRef="GetFileFolderConnections_2" ItemInputMode="RelativePath" ManualEntryFileFolderRelativePath="[Path.combine(Year.ToString, MonthFolderName)]" ParentFileFolderFriendlyName="planos mensais de investimento" ParentFileFolderId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" Result="[monthFolder]" UseConnectionService="True">
+                <uga:GetFileFolderConnections.FileFolderIdBackup>
+                  <usau:BackupSlot x:TypeArguments="ugade:EDriveMode" StoredValue="{x:Null}">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="ugade:EDriveMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uga:GetFileFolderConnections.FileFolderIdBackup>
+                <uga:GetFileFolderConnections.Item>
+                  <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" InputMode="RelativePath" ParentId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ParentIdFriendlyName="planos mensais de investimento" ParentIdFullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" RelativePath="[Path.combine(Year.ToString, MonthFolderName)]">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="RelativePath">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                            <InArgument x:TypeArguments="x:String">https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3</InArgument>
+                            <InArgument x:TypeArguments="x:String" />
+                            <InArgument x:TypeArguments="x:String">planos mensais de investimento</InArgument>
+                          </scg:List>
+                          <scg:List x:TypeArguments="x:Object" x:Key="RelativePath" Capacity="3">
+                            <InArgument x:TypeArguments="x:String">https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3</InArgument>
+                            <InArgument x:TypeArguments="x:String">planos mensais de investimento</InArgument>
+                            <InArgument x:TypeArguments="x:String">[Path.combine(Year.ToString, MonthFolderName)]</InArgument>
+                          </scg:List>
+                          <scg:List x:TypeArguments="x:Object" x:Key="FullPath" Capacity="1">
+                            <InArgument x:TypeArguments="x:String">[Path.Combine(yearFolder.FullName, MonthFolderName)]</InArgument>
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                  </ugam:DriveItemArgument>
+                </uga:GetFileFolderConnections.Item>
+              </uga:GetFileFolderConnections>
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Month folder &quot; + MonthFolderName + &quot; already existed&quot;]" />
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <uga:CreateFolderConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID2}" ManualEntryParentFolderId="{x:Null}" NewFolderDescription="{x:Null}" NewFolderName="{x:Null}" ParentFolderExisting="{x:Null}" AuthScopesInvalid="False" BrowserParentFolderFriendlyName="planos mensais de investimento" BrowserParentFolderId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConflictResolution="Fail" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Create Folder - Month" FolderInputMode="FolderPath" FolderPath="[Path.Combine(year.ToString, MonthFolderName)]" sap2010:WorkflowViewState.IdRef="CreateFolderConnections_2" ParentFolderInputMode="Browse" Result="[monthFolder]" UseConnectionService="True">
+                <uga:CreateFolderConnections.FolderInputModeBackup>
+                  <usau:BackupSlot x:TypeArguments="ugade:ECreateFolderMode" StoredValue="FolderPath">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:List x:TypeArguments="x:Object" x:Key="FolderName" Capacity="1">
+                        <InArgument x:TypeArguments="x:String">[Path.combine(Year.ToString, MonthFolderName)]</InArgument>
+                      </scg:List>
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uga:CreateFolderConnections.FolderInputModeBackup>
+                <uga:CreateFolderConnections.Item>
+                  <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" FriendlyName="planos mensais de investimento" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" InputMode="Browse">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="Browse">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                            <InArgument x:TypeArguments="x:String">https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3</InArgument>
+                            <x:Reference>__ReferenceID1</x:Reference>
+                            <InArgument x:TypeArguments="x:String">planos mensais de investimento</InArgument>
+                          </scg:List>
+                          <scg:List x:TypeArguments="x:Object" x:Key="UseExisting" Capacity="1">
+                            <x:Null />
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                    <ugam:DriveItemArgument.DriveId>
+                      <InArgument x:TypeArguments="x:String" x:Name="__ReferenceID1" />
+                    </ugam:DriveItemArgument.DriveId>
+                    <ugam:DriveItemArgument.ParentIdFullPathHint>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ugam:DriveItemArgument.ParentIdFullPathHint>
+                  </ugam:DriveItemArgument>
+                </uga:CreateFolderConnections.Item>
+              </uga:CreateFolderConnections>
+              <ui:LogMessage DisplayName="Log Message 1" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Month folder &quot; + MonthFolderName + &quot; was created&quot;]" />
+            </Sequence>
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Copy templates" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <uga:CopyFileConnections BrowserFolderId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FolderFriendlyName="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID3}" ManualFileId="{x:Null}" ManualFolderId="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConflictResolution="AddSeparate" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Copy File - Analise" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" Folder="[monthFolder]" FolderInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="CopyFileConnections_1" NewFileName="[&quot;Análise de Mercado - &quot; + Month.toString + &quot;-&quot; + Year.ToString]" Result="[analiseMercadoFile]" UseConnectionService="True">
+          <uga:CopyFileConnections.Destination>
+            <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" Existing="[monthFolder]" FullPathHint="My Drive" InputMode="UseExisting">
+              <ugam:DriveItemArgument.Backup>
+                <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="UseExisting">
+                  <usau:BackupSlot.BackupValues>
+                    <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                      <InArgument x:TypeArguments="x:String">root</InArgument>
+                      <InArgument x:TypeArguments="x:String" />
+                      <InArgument x:TypeArguments="x:String">My Drive</InArgument>
+                    </scg:List>
+                  </usau:BackupSlot.BackupValues>
+                </usau:BackupSlot>
+              </ugam:DriveItemArgument.Backup>
+              <ugam:DriveItemArgument.ParentIdFullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.ParentIdFullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:CopyFileConnections.Destination>
+          <uga:CopyFileConnections.FileIdBackup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID4" StoredValue="Browse">
+              <usau:BackupSlot.BackupValues>
+                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </uga:CopyFileConnections.FileIdBackup>
+          <uga:CopyFileConnections.Item>
+            <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID4}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="Análise de Mercado - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Análise de Mercado - MES/ANO" InputMode="Browse">
+              <ugam:DriveItemArgument.DriveId>
+                <InArgument x:TypeArguments="x:String" />
+              </ugam:DriveItemArgument.DriveId>
+              <ugam:DriveItemArgument.ParentIdFullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.ParentIdFullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:CopyFileConnections.Item>
+        </uga:CopyFileConnections>
+        <uga:CopyFileConnections BrowserFolderId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FolderFriendlyName="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID5}" ManualFileId="{x:Null}" ManualFolderId="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/spreadsheets/d/1dzusriM2dH8FkdisVpoLCi302ByinnuxOE66KQw3bnQ/edit?usp=drivesdk" ConflictResolution="AddSeparate" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Copy File - Operações" FileFriendlyName="Operações - MES/ANO" FileInputMode="Browse" Folder="[monthFolder]" FolderInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="CopyFileConnections_2" NewFileName="[&quot;Operações - &quot; + Month.toString + &quot;-&quot; + Year.ToString]" Result="[operacoesFile]" UseConnectionService="True">
+          <uga:CopyFileConnections.Destination>
+            <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" Existing="[monthFolder]" FullPathHint="My Drive" InputMode="UseExisting">
+              <ugam:DriveItemArgument.Backup>
+                <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID5" StoredValue="UseExisting">
+                  <usau:BackupSlot.BackupValues>
+                    <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                      <InArgument x:TypeArguments="x:String">root</InArgument>
+                      <InArgument x:TypeArguments="x:String" />
+                      <InArgument x:TypeArguments="x:String">My Drive</InArgument>
+                    </scg:List>
+                  </usau:BackupSlot.BackupValues>
+                </usau:BackupSlot>
+              </ugam:DriveItemArgument.Backup>
+              <ugam:DriveItemArgument.ParentIdFullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.ParentIdFullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:CopyFileConnections.Destination>
+          <uga:CopyFileConnections.FileIdBackup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID6" StoredValue="Browse">
+              <usau:BackupSlot.BackupValues>
+                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </uga:CopyFileConnections.FileIdBackup>
+          <uga:CopyFileConnections.Item>
+            <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID6}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/spreadsheets/d/1dzusriM2dH8FkdisVpoLCi302ByinnuxOE66KQw3bnQ/edit?usp=drivesdk" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="Operações - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Operações - MES/ANO" InputMode="Browse">
+              <ugam:DriveItemArgument.DriveId>
+                <InArgument x:TypeArguments="x:String" />
+              </ugam:DriveItemArgument.DriveId>
+              <ugam:DriveItemArgument.ParentIdFullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.ParentIdFullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:CopyFileConnections.Item>
+        </uga:CopyFileConnections>
+      </Sequence>
+    </Sequence>
+  </Sequence>
+</Activity>

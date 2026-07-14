@@ -1,0 +1,44 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Compose Report",
+    "kind": "process",
+    "type": "process",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "bc4c38e0-3031-468e-9ba8-d9d36250ec3f",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "Compose Report"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Process",
+      "name": "Compose Report",
+      "package": {
+        "key": "fa41ff32-0432-4164-a9f3-cb79f695dd16"
+      },
+      "packageName": "Avaliador.de.indices.mensais.process.Compose.Report",
+      "jobPriority": "Medium",
+      "jobRecording": "Disabled",
+      "targetFrameworkValue": "Portable",
+      "duration": 40,
+      "frequency": 500,
+      "quality": 100,
+      "remoteControlAccess": "None",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "19d3aed6-1597-4fb4-854a-689d563ca602",
+    "files": []
+  }
+}

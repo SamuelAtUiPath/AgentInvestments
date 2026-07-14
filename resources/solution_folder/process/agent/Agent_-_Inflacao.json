@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Agent - Inflacao",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "8a4d0bb0-4898-4e0e-b1e6-f54d1892c64d",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "Agent - Inflacao"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "Agent - Inflacao",
+      "package": {
+        "key": "1e15b5b8-f0a5-408f-972e-21fc43cedfc4"
+      },
+      "packageName": "Avaliador.de.indices.mensais.agent.Agent.Inflacao",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "138d19d1-53be-4a0b-a598-9c3e2a6c8f3f",
+    "files": []
+  }
+}

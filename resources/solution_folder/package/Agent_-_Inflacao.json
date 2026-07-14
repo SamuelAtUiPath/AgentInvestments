@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Agent - Inflacao",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "8a4d0bb0-4898-4e0e-b1e6-f54d1892c64d",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "Agent - Inflacao"
+    },
+    "locks": [],
+    "key": "1e15b5b8-f0a5-408f-972e-21fc43cedfc4",
+    "files": []
+  }
+}

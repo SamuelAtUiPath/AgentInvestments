@@ -1,0 +1,127 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "type": "agent",
+      "uniqueId": "d30eb037-3464-463d-a1eb-96705cb27bef",
+      "input": {
+        "type": "object",
+        "required": [
+          "month",
+          "year"
+        ],
+        "properties": {
+          "month": {
+            "type": "string",
+            "description": "The reference month for the IPCA lookup. Expected format is either a month name in English or Portuguese, such as January or janeiro, or a two-digit month number from 01 to 12. This value comes from the user request. If unknown, ask the user to provide the month."
+          },
+          "year": {
+            "type": "integer",
+            "description": "The reference year for the IPCA lookup. Expected format is a four-digit calendar year such as 2026. This value comes from the user request. If unknown, ask the user to provide the year."
+          }
+        }
+      },
+      "output": {
+        "type": "object",
+        "required": [
+          "reference_month",
+          "reference_year",
+          "ipca_monthly_variation_percent",
+          "ipca_accumulated_12_months_percent",
+          "selic_annual_rate_percent",
+          "real_interest_rate_percent",
+          "calculation",
+          "market_expectation_status",
+          "market_expectation_details",
+          "links_used",
+          "notes",
+          "ipca_reasons_pt",
+          "selic_monthly_change_percent",
+          "selic_reasons_pt"
+        ],
+        "properties": {
+          "reference_month": {
+            "type": "string",
+            "description": "The IPCA reference month used for the lookup, normalized as an English month name or two-digit month. Included for every result."
+          },
+          "reference_year": {
+            "type": "integer",
+            "description": "The four-digit IPCA reference year used for the lookup. Included for every result."
+          },
+          "ipca_monthly_variation_percent": {
+            "type": "number",
+            "description": "The IPCA monthly variation for the requested month and year, as a numeric percentage value such as 0.24. This comes from the web source used for IPCA. If no reliable value is found, use 0 and explain the missing value in notes."
+          },
+          "ipca_accumulated_12_months_percent": {
+            "type": "number",
+            "description": "The IPCA accumulated over 12 months for the requested month and year, as a numeric percentage value such as 5.35. This comes from the web source used for IPCA. If no reliable value is found, use 0 and explain the missing value in notes."
+          },
+          "selic_annual_rate_percent": {
+            "type": "number",
+            "description": "The annual SELIC rate for Brazil, preferably the current target rate, as a numeric percentage value such as 15.00. This comes from the web source used for SELIC. If no reliable value is found, use 0 and explain the missing value in notes."
+          },
+          "real_interest_rate_percent": {
+            "type": "number",
+            "description": "The subtraction-based real interest rate estimate calculated as SELIC annual rate percent minus IPCA accumulated 12 months percent. If either source value is unavailable, use 0 and explain the missing value in notes."
+          },
+          "calculation": {
+            "type": "string",
+            "description": "The exact calculation performed, including units. Example: 15.00 - 5.35 = 9.65 percentage points. If unavailable, explain which value is missing."
+          },
+          "market_expectation_status": {
+            "type": "string",
+            "description": "Classification of the monthly IPCA variation versus market expectations. Use exactly one of: IN_LINE_WITH_EXPECTATIONS, ABOVE_EXPECTATIONS, BELOW_EXPECTATIONS, NOT_REPORTED."
+          },
+          "market_expectation_details": {
+            "type": "string",
+            "description": "Brief English explanation of how the monthly IPCA variation compared with the market forecast, median, estimate range, or consensus found in the sources. If not reported, explain that no clear expectation was found."
+          },
+          "links_used": {
+            "type": "array",
+            "description": "All links used as evidence for monthly IPCA variation, IPCA accumulated over 12 months, market expectation comparison, SELIC, and supporting interpretation. Include source name, URL, and what the source supported.",
+            "items": {
+              "type": "object",
+              "required": [
+                "source_name",
+                "url",
+                "supports"
+              ],
+              "properties": {
+                "source_name": {
+                  "type": "string",
+                  "description": "Readable name of the source, such as IBGE or Banco Central do Brasil."
+                },
+                "url": {
+                  "type": "string",
+                  "description": "Public URL used as evidence."
+                },
+                "supports": {
+                  "type": "string",
+                  "description": "What this link supported, such as monthly IPCA variation, IPCA 12-month value, market expectation, SELIC annual target rate, or supporting context."
+                }
+              }
+            }
+          },
+          "notes": {
+            "type": "string",
+            "description": "Brief explanation of confidence, assumptions, and any missing information. Use English."
+          },
+          "ipca_reasons_pt": {
+            "type": "string",
+            "description": "A final paragraph (1-2 paragraphs) in Portuguese explaining the reasons behind the IPCA level for the requested month and year, based on web search results. Include specific drivers when available (e.g., food prices, fuel, services, housing, etc.). If no reliable information is found, explain that the reasons could not be determined."
+          },
+          "selic_monthly_change_percent": {
+            "type": "number",
+            "description": "The change in the SELIC annual rate compared to the previous month, in percentage points. For example, if SELIC went from 14.25% to 15.00%, the change is 0.75. If it went from 15.00% to 14.25%, the change is -0.75. If the previous month value cannot be found, use 0 and explain in notes."
+          },
+          "selic_reasons_pt": {
+            "type": "string",
+            "description": "A final paragraph (1-2 paragraphs) in Portuguese explaining the reasons behind the SELIC level and any changes for the requested month and year, based on web search results. Include specific drivers when available (e.g., inflation targeting, economic growth, exchange rate, Copom decisions, etc.). If no reliable information is found, explain that the reasons could not be determined."
+          }
+        }
+      }
+    }
+  ]
+}

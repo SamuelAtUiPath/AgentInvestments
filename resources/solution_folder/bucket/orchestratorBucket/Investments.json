@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Investments",
+    "kind": "bucket",
+    "type": "orchestratorBucket",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "Investments",
+      "type": "Orchestrator"
+    },
+    "locks": [],
+    "key": "8d8a62d7-7db5-46db-807d-7452a4ac0a8d",
+    "files": []
+  }
+}

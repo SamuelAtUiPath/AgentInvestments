@@ -1,0 +1,44 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Get Google Finance",
+    "kind": "process",
+    "type": "process",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "2fedaf85-3d23-4cc3-a3cf-9be5be403f64",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "Get Google Finance"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Process",
+      "name": "Get Google Finance",
+      "package": {
+        "key": "3b0bdca8-1fa8-4761-9d35-e3fd6294ef65"
+      },
+      "packageName": "Avaliador.de.indices.mensais.process.Get.Google.Finance",
+      "jobPriority": "Medium",
+      "jobRecording": "Disabled",
+      "targetFrameworkValue": "Portable",
+      "duration": 40,
+      "frequency": 500,
+      "quality": 100,
+      "remoteControlAccess": "None",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "8e746874-d1c0-4288-aea3-53d128b6aa73",
+    "files": []
+  }
+}

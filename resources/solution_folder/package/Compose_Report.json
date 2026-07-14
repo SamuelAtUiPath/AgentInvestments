@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Compose Report",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "bc4c38e0-3031-468e-9ba8-d9d36250ec3f",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "Compose Report"
+    },
+    "locks": [],
+    "key": "fa41ff32-0432-4164-a9f3-cb79f695dd16",
+    "files": []
+  }
+}

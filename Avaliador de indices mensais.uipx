@@ -1,0 +1,20 @@
+{
+  "SolutionId": "37f0ab6d-ffde-4650-bc93-c30e8c5943ba",
+  "Projects": [
+    {
+      "Id": "8a4d0bb0-4898-4e0e-b1e6-f54d1892c64d",
+      "Type": "Agent",
+      "ProjectRelativePath": "Agent - Inflacao/project.uiproj"
+    },
+    {
+      "Id": "2fedaf85-3d23-4cc3-a3cf-9be5be403f64",
+      "Type": "Process",
+      "ProjectRelativePath": "Get Google Finance/project.uiproj"
+    },
+    {
+      "Id": "bc4c38e0-3031-468e-9ba8-d9d36250ec3f",
+      "Type": "Process",
+      "ProjectRelativePath": "Compose Report/project.uiproj"
+    }
+  ]
+}

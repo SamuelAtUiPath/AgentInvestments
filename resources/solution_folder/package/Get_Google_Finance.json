@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Get Google Finance",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "2fedaf85-3d23-4cc3-a3cf-9be5be403f64",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "Get Google Finance"
+    },
+    "locks": [],
+    "key": "3b0bdca8-1fa8-4761-9d35-e3fd6294ef65",
+    "files": []
+  }
+}

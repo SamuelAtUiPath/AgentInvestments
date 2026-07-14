@@ -1,0 +1,30 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "85d52055-2dda-4784-9da2-2f0767102186",
+      "type": "Process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "Year": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647,
+            "x-default-expression": "2026",
+            "default": 2026
+          },
+          "Month": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          }
+        },
+        "required": []
+      },
+      "output": null
+    }
+  ]
+}

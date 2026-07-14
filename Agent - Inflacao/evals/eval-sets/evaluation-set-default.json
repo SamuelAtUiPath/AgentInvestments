@@ -1,0 +1,39 @@
+{
+  "fileName": "evaluation-set-default.json",
+  "id": "1db74dec-246d-49d5-990e-aac1f4fcff75",
+  "name": "Default Evaluation Set",
+  "batchSize": 10,
+  "timeoutMinutes": 20,
+  "evaluatorRefs": [
+    "e9ad388c-b8cd-49b6-9c01-68fa72373182"
+  ],
+  "evaluations": [
+    {
+      "id": "cbf8d43d-3aba-4fca-a9a2-5b7e9da78785",
+      "name": "Debug Run 7/13/2026, 3:13:37 PM",
+      "inputs": {
+        "periodo": "2026-06-01"
+      },
+      "expectedOutput": {
+        "ipca-15-previa": null,
+        "link-materia-g1": null
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "evalSetId": "1db74dec-246d-49d5-990e-aac1f4fcff75",
+      "createdAt": "2026-07-13T18:13:37.006Z",
+      "updatedAt": "2026-07-13T18:13:37.006Z",
+      "source": "firstSuccessfulRun"
+    }
+  ],
+  "modelSettings": [],
+  "agentMemoryEnabled": false,
+  "agentMemorySettings": [],
+  "lineByLineEvaluation": false,
+  "createdAt": "2026-07-13T18:05:58.347Z",
+  "updatedAt": "2026-07-13T18:13:37.006Z",
+  "category": 1
+}

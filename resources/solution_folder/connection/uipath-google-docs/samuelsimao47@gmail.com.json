@@ -1,0 +1,28 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "samuelsimao47@gmail.com",
+    "kind": "connection",
+    "type": "uipath-google-docs",
+    "apiVersion": "integrationservice.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "connectorName": "Google Docs",
+      "name": "samuelsimao47@gmail.com",
+      "authenticationType": "AuthenticateAfterDeployment",
+      "connectorVersion": "1.7.16",
+      "connectorKey": "uipath-google-docs",
+      "pollingInterval": 5
+    },
+    "locks": [],
+    "key": "1082fa04-63dd-4b18-9e15-d4a441353ec0",
+    "files": []
+  }
+}

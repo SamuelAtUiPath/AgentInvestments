@@ -1,0 +1,248 @@
+{
+  "$resourceType": "tool",
+  "name": "WebSearch",
+  "description": "Searches the public web using a natural-language query and returns relevant results with source links. Use this tool for every external lookup needed to find Brazilian macroeconomic data, including IPCA monthly variation, IPCA accumulated over 12 months for a requested month and year, market expectations for that monthly IPCA result, and the current annual SELIC rate. Prefer official or highly reliable sources such as IBGE, Banco Central do Brasil, official government pages, or reputable financial/news outlets. Provide a clear query, avoid unnecessary site restrictions, and keep the returned links so they can be included in the agent output.",
+  "location": "external",
+  "type": "integration",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "provider": {
+        "type": "string",
+        "title": "Search Engine",
+        "description": "The search engine to use",
+        "enum": [
+          "GoogleCustomSearch"
+        ],
+        "oneOf": [
+          {
+            "const": "GoogleCustomSearch",
+            "title": "GoogleCustomSearch"
+          }
+        ]
+      },
+      "query": {
+        "type": "string",
+        "title": "Search",
+        "description": "The natural language query to search the web for"
+      },
+      "num": {
+        "type": "integer",
+        "title": "Number of results",
+        "description": "1."
+      },
+      "start": {
+        "type": "integer",
+        "title": "Start",
+        "description": "First result index (pagination)."
+      },
+      "siteSearch": {
+        "type": "string",
+        "title": "Site Search",
+        "description": "Optionally restrict the search to a specific site or domain, such as ibge.gov.br or bcb.gov.br. Leave blank when broader web search is needed."
+      },
+      "siteSearchFilter": {
+        "type": "string",
+        "title": "Site Search Filter",
+        "description": "Either \"i\" (include) or \"e\" (exclude)."
+      }
+    },
+    "required": [
+      "provider",
+      "query"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "formattedResults": {
+        "type": "string",
+        "title": "Formatted results",
+        "description": "The search results string containing title, URL, and snippet"
+      },
+      "results[*]": {
+        "type": "array",
+        "title": "Results",
+        "items": {
+          "$ref": "#/definitions/results[*]"
+        }
+      }
+    },
+    "definitions": {
+      "results[*]": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Result title",
+            "description": "The title of a search result item."
+          },
+          "snippet": {
+            "type": "string",
+            "title": "Result snippet",
+            "description": "A brief summary or excerpt of a search result item."
+          },
+          "url": {
+            "type": "string",
+            "title": "Result url",
+            "description": "The web address of the search result."
+          }
+        }
+      }
+    }
+  },
+  "settings": {},
+  "properties": {
+    "toolPath": "/v2/webSearch",
+    "objectName": "v2::webSearch",
+    "toolDisplayName": "Web Search",
+    "toolDescription": "Web search executes a search of the public domain using a natural language search query. The search results are available in the output. Web search offers near-real time search results, but certain time sensitive data like stock prices or weather will not consistently be current. There could be a few days lag. Be sure to pass in date/time and/or location as arguments in the query if required.",
+    "method": "POST",
+    "connection": {
+      "id": "8b0d1a49-950b-469e-ba41-1d5e57f7262f",
+      "name": "samuel.simao@uipath.com #2",
+      "elementInstanceId": 0,
+      "apiBaseUri": "",
+      "state": "enabled",
+      "isDefault": false,
+      "connector": {
+        "key": "uipath-uipath-airdk",
+        "name": "UiPath GenAI Activities",
+        "image": "https://staging.uipath.com/elements_/scaleunit_/4a9b6040-645f-4006-a000-829794b794d4/v3/element/elements/uipath-uipath-airdk/image",
+        "enabled": true
+      },
+      "folder": {
+        "key": "7bcdea36-bd81-4786-8456-1f2b18072273",
+        "path": "837db464-a85c-411c-930c-8981bfcba97c.7bcdea36-bd81-4786-8456-1f2b18072273"
+      },
+      "solutionProperties": {
+        "resourceKey": "8b0d1a49-950b-469e-ba41-1d5e57f7262f"
+      }
+    },
+    "parameters": [
+      {
+        "name": "provider",
+        "displayName": "Search Engine",
+        "type": "string",
+        "fieldLocation": "body",
+        "fieldVariant": "static",
+        "value": "GoogleCustomSearch",
+        "description": "The search engine to use",
+        "dynamic": false,
+        "position": "primary",
+        "sortOrder": 1,
+        "required": true,
+        "enumValues": [
+          {
+            "name": "GoogleCustomSearch",
+            "value": "GoogleCustomSearch"
+          }
+        ],
+        "loadReferenceOptionsByDefault": null,
+        "dynamicBehavior": [],
+        "reference": null,
+        "isCascading": false
+      },
+      {
+        "name": "query",
+        "displayName": "Search",
+        "type": "string",
+        "fieldLocation": "body",
+        "fieldVariant": "dynamic",
+        "value": "{{prompt}}",
+        "description": "The natural language query to search the web for",
+        "dynamic": true,
+        "position": "primary",
+        "sortOrder": 2,
+        "required": true,
+        "enumValues": null,
+        "loadReferenceOptionsByDefault": null,
+        "dynamicBehavior": [],
+        "reference": null,
+        "isCascading": false
+      },
+      {
+        "name": "num",
+        "displayName": "Number of results",
+        "type": "integer",
+        "fieldLocation": "body",
+        "fieldVariant": "dynamic",
+        "value": "{{prompt}}",
+        "description": "1.",
+        "dynamic": true,
+        "position": "secondary",
+        "sortOrder": 3,
+        "required": false,
+        "enumValues": null,
+        "loadReferenceOptionsByDefault": null,
+        "dynamicBehavior": [],
+        "reference": null,
+        "isCascading": false
+      },
+      {
+        "name": "siteSearch",
+        "displayName": "Site Search",
+        "type": "string",
+        "fieldLocation": "body",
+        "fieldVariant": "dynamic",
+        "value": "{{prompt}}",
+        "description": "Optionally restrict the search to a specific site or domain, such as ibge.gov.br or bcb.gov.br. Leave blank when broader web search is needed.",
+        "dynamic": true,
+        "position": "secondary",
+        "sortOrder": 4,
+        "required": false,
+        "enumValues": null,
+        "loadReferenceOptionsByDefault": null,
+        "dynamicBehavior": [],
+        "reference": null,
+        "isCascading": false
+      },
+      {
+        "name": "siteSearchFilter",
+        "displayName": "Site Search Filter",
+        "type": "string",
+        "fieldLocation": "body",
+        "fieldVariant": "dynamic",
+        "value": "{{prompt}}",
+        "description": "Either \"i\" (include) or \"e\" (exclude).",
+        "dynamic": true,
+        "position": "secondary",
+        "sortOrder": 5,
+        "required": false,
+        "enumValues": null,
+        "loadReferenceOptionsByDefault": null,
+        "dynamicBehavior": [],
+        "reference": null,
+        "isCascading": false
+      },
+      {
+        "name": "start",
+        "displayName": "Start",
+        "type": "integer",
+        "fieldLocation": "body",
+        "fieldVariant": "dynamic",
+        "value": "{{prompt}}",
+        "description": "First result index (pagination).",
+        "dynamic": true,
+        "position": "secondary",
+        "sortOrder": 6,
+        "required": false,
+        "enumValues": null,
+        "loadReferenceOptionsByDefault": null,
+        "dynamicBehavior": [],
+        "reference": null,
+        "isCascading": false
+      }
+    ],
+    "bodyStructure": {
+      "contentType": "json"
+    }
+  },
+  "guardrail": {
+    "policies": []
+  },
+  "iconUrl": "https://staging.uipath.com/elements_/scaleunit_/4a9b6040-645f-4006-a000-829794b794d4/v3/element/elements/uipath-uipath-airdk/image",
+  "id": "bdb0b9ca-42c1-4307-91f1-4d0ca1a99ec3",
+  "isPreview": false,
+  "isEnabled": true
+}
