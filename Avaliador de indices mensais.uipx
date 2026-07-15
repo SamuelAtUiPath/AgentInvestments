@@ -25,6 +25,11 @@
       "Id": "03111c1e-5747-4294-882f-9a38e651f9cb",
       "Type": "Process",
       "ProjectRelativePath": "GetValuesForOneIndex/project.uiproj"
+    },
+    {
+      "Id": "d43a739b-01e6-4b99-8a89-f222e225cb1d",
+      "Type": "Process",
+      "ProjectRelativePath": "test/project.uiproj"
     }
   ]
 }

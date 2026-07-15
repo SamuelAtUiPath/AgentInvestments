@@ -6,8 +6,75 @@
       "filePath": "Main.xaml",
       "uniqueId": "62311eb6-f301-4c1d-967d-6af4a9822a0c",
       "type": "Process",
-      "input": null,
-      "output": null
+      "input": {
+        "type": "object",
+        "properties": {
+          "IndexNameAtUrl": {
+            "type": "string"
+          },
+          "IndexName": {
+            "type": "string"
+          },
+          "Window": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "CurrentValue": {
+            "type": "number",
+            "minimum": -1.7976931348623157E+308,
+            "maximum": 1.7976931348623157E+308
+          },
+          "WindowVariation": {
+            "type": "number",
+            "minimum": -1.7976931348623157E+308,
+            "maximum": 1.7976931348623157E+308
+          },
+          "ScreenshotFileName": {
+            "type": "string"
+          },
+          "screenshotFileInGDrive": {
+            "$ref": "#/definitions/job-attachment"
+          },
+          "screenshotAccessUrl": {
+            "type": "string"
+          }
+        },
+        "definitions": {
+          "job-attachment": {
+            "type": "object",
+            "properties": {
+              "ID": {
+                "type": "string",
+                "description": "Orchestrator attachment key"
+              },
+              "FullName": {
+                "type": "string",
+                "description": "File name"
+              },
+              "MimeType": {
+                "type": "string",
+                "description": "The MIME type of the content, such as \"application/json\" or \"image/png"
+              },
+              "Metadata": {
+                "type": "object",
+                "description": "Dictionary<string, string> of metadata",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "ID"
+            ],
+            "x-uipath-resource-kind": "JobAttachment"
+          }
+        }
+      }
     }
   ]
 }

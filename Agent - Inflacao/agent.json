@@ -127,12 +127,11 @@
   "metadata": {
     "storageVersion": "50.0.0",
     "isConversational": false,
-    "targetRuntime": "pythonAgent",
-    "showProjectCreationExperience": false
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
   },
   "type": "lowCode",
   "guardrails": [],
-  "projectId": "4159af8b-f481-4179-8af5-50ac60ca46a0",
   "messages": [
     {
       "role": "system",
@@ -170,5 +169,6 @@
         }
       ]
     }
-  ]
+  ],
+  "projectId": "4159af8b-f481-4179-8af5-50ac60ca46a0"
 }

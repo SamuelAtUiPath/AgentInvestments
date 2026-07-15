@@ -3,9 +3,7 @@
   "dependencies": {
     "UiPath.IntegrationService.Activities": "1.29.0-beta.20260707.5",
     "UiPath.System.Activities": "26.6.1",
-    "UiPath.WebAPI.Activities": "2.4.0",
-    "UiPath.UIAutomation.Activities": "26.10.0",
-    "UiPath.GSuite.Activities": "3.10.10"
+    "UiPath.WebAPI.Activities": "2.4.0"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -46,7 +44,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "62311eb6-f301-4c1d-967d-6af4a9822a0c",
+      "uniqueId": "e0340ca8-abb3-4737-8d22-43dbbf9137e3",
       "input": [],
       "output": []
     }
@@ -55,6 +53,6 @@
   "templateProjectData": {},
   "publishData": {},
   "targetFramework": "Portable",
-  "projectId": "d8041588-cb03-4586-9cc1-b1d71f52e50f",
-  "name": "GetValuesForOneIndex"
+  "projectId": "acedfd7c-ed96-47d5-a9e8-e592030c62ce",
+  "name": "test"
 }

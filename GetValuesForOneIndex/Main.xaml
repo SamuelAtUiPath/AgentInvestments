@@ -4,22 +4,72 @@
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib"
+ xmlns:this="clr-namespace:"
+ xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities"
+ xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities"
+ xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities"
+ xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:uix="http://schemas.uipath.com/workflow/activities/uix"
+ xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform"
+ xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="IndexNameAtUrl" Type="InArgument(x:String)" />
+    <x:Property Name="IndexName" Type="InArgument(x:String)" />
+    <x:Property Name="Window" Type="InArgument(x:String)" />
+    <x:Property Name="CurrentValue" Type="OutArgument(x:Double)" />
+    <x:Property Name="WindowVariation" Type="OutArgument(x:Double)" />
+    <x:Property Name="ScreenshotFileName" Type="OutArgument(x:String)" />
+    <x:Property Name="screenshotFileInGDrive" Type="OutArgument(ugdm:GDriveRemoteItem)" />
+    <x:Property Name="screenshotAccessUrl" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:Main.IndexNameAtUrl>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.IndexNameAtUrl>
+  <this:Main.IndexName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.IndexName>
+  <this:Main.Window>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.Window>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="19">
-      <x:String>UiPath.Core.Activities</x:String>
+    <scg:List x:TypeArguments="x:String" Capacity="44">
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
       <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.UIAutomationNext</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.Statements</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Design.ViewModels.Activities.Base</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Design.Services.Contracts</x:String>
       <x:String>System.Activities.Expressions</x:String>
       <x:String>System.Activities.Validation</x:String>
       <x:String>System.Activities.XamlIntegration</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
       <x:String>Microsoft.VisualBasic.Activities</x:String>
-      <x:String>System.Collections</x:String>
-      <x:String>System.Collections.Generic</x:String>
       <x:String>System.Data</x:String>
       <x:String>System.Diagnostics</x:String>
       <x:String>System.IO</x:String>
@@ -27,10 +77,12 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>Newtonsoft.Json</x:String>
       <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="14">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -45,14 +97,145 @@
       <AssemblyReference>netstandard</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap:VirtualizedContainerService.HintSize="356,732" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="rawNumbers" />
+      <Variable x:TypeArguments="ui:UiElement" Name="outputElement">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">NHighlight_1</x:String>
+            <x:String x:Key="SourcePropertyName">OutUiElement</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="upr:ILocalResource" Name="screenshotFile" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap2010:WorkflowViewState.IdRef="ManualTrigger_1" />
+    <ui:LogMessage DisplayName="Log Message 1" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Here&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: USD / BRL 5.0963 (▲ 0.14%) United States Dollar / Brazilian Real | Google Financ" HealingAgentBehavior="Job" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" IsDisplayNameAuto="True" ScopeGuid="6079df75-1ab1-4ea5-a79a-d0afc43cd374" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="Get Numbers" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <uix:NGetText DisplayName="Get Text '5.0962arrow_upward+0.70…'" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="6079df75-1ab1-4ea5-a79a-d0afc43cd374" TextString="[rawNumbers]" Version="V5">
+                <uix:NGetText.Target>
+                  <uix:TargetAnchorable BrowserURL="google.com/finance/beta/quote/USD-BRL" DesignTimeRectangle="0, 80, 1920, 809" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='DIV' innertext='*arrow_*%(*)*' idx='16' /&gt;" Guid="14274cc8-6d90-4295-9cd3-bb0d27e296d6" InformativeScreenshot="1d6a59572443770f51e08ec7a802cef6.jpg" ScopeSelectorArgument="&lt;html title='USD / BRL 5.0962 (▲ 0.13%) United States Dollar / Brazilian Real | Google Finance' app='chrome.exe' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NGetText.Target>
+              </uix:NGetText>
+              <Assign DisplayName="Assign - Current Value" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[CurrentValue]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double">[If(System.Text.RegularExpressions.Regex.IsMatch(rawNumbers, "\d{1,3}(?:[.,]\d{3})*(?:[.,]\d+)?"), CDbl(System.Text.RegularExpressions.Regex.Match(rawNumbers, "\d{1,3}(?:[.,]\d{3})*(?:[.,]\d+)?").Value.Replace(",", String.Empty)), 0.0)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign DisplayName="Assign - Window Variation" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[WindowVariation]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double">[If(System.Text.RegularExpressions.Regex.Matches(rawNumbers, "[+-]?\d{1,3}(?:,\d{3})*(?:\.\d+)?%?").Count &gt;= 2, CDbl(System.Text.RegularExpressions.Regex.Matches(rawNumbers, "[+-]?\d{1,3}(?:,\d{3})*(?:\.\d+)?%?")(1).Value.Replace("%", String.Empty).Replace(",", String.Empty)), 0.0)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[string.Format(&quot;{0}&quot;, rawNumbers)]" />
+            </Sequence>
+            <Sequence DisplayName="Get Screenshot" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Assign DisplayName="Assign - Screenshot File Name" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[ScreenshotFileName]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[IndexName + "_" + Window + ".png"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <uix:NHighlight Color="Gold" DisplayName="Highlight 'United States Dollar / …'" HealingAgentBehavior="SameAsCard" HighlightTime="0.01" sap2010:WorkflowViewState.IdRef="NHighlight_1" OutUiElement="[outputElement]" ScopeIdentifier="6079df75-1ab1-4ea5-a79a-d0afc43cd374" Version="V5">
+                <uix:NHighlight.Target>
+                  <uix:TargetAnchorable BrowserURL="google.com/finance/beta/quote/USD-BRL" DesignTimeRectangle="394, 128, 792, 404" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='DIV' class='JZvoCc' /&gt;" Guid="8f5a5527-515f-445a-aaa2-c615097263f1" InformativeScreenshot="dcb0866ed1692718d2662649fc428b2f.jpg" ScopeSelectorArgument="&lt;html title='USD / BRL 5.0903 (▲ 0.018%) United States Dollar / Brazilian Real | Google Finance' app='chrome.exe' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NHighlight.Target>
+              </uix:NHighlight>
+              <uix:NTakeScreenshot DisplayName="Take Screenshot" FileName="[ScreenshotFileName]" FileNameMode="None" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTakeScreenshot_1" InUiElement="[outputElement]" OutFile="[screenshotFile]" ScopeIdentifier="6079df75-1ab1-4ea5-a79a-d0afc43cd374" Version="V5" />
+              <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FilesList="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualFolderId="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/10yN1lS9GUV0h8XOuIQTtE2YgbibV8b-O" ConflictResolution="Replace" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByVariable" FirstResult="[screenshotFileInGDrive]" FolderInputMode="Browse" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_1" MultipleFilesToUpload="[Enumerable.Repeat(screenshotFile, 1).ToList()]" SaveToFolderName="Images" UseConnectionService="True">
+                <uga:UploadFilesConnections.FilesBackup>
+                  <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByVariable">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="ugade:FilesInputMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uga:UploadFilesConnections.FilesBackup>
+                <uga:UploadFilesConnections.Folder>
+                  <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/10yN1lS9GUV0h8XOuIQTtE2YgbibV8b-O" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="Images" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Images" InputMode="Browse">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                    <ugam:DriveItemArgument.DriveId>
+                      <InArgument x:TypeArguments="x:String" />
+                    </ugam:DriveItemArgument.DriveId>
+                    <ugam:DriveItemArgument.ParentIdFullPathHint>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ugam:DriveItemArgument.ParentIdFullPathHint>
+                  </ugam:DriveItemArgument>
+                </uga:UploadFilesConnections.Folder>
+              </uga:UploadFilesConnections>
+              <uga:ShareFileFolderConnections BrowserFileFolderFriendlyName="{x:Null}" BrowserFileFolderId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Domain="{x:Null}" FileFolderIdBackup="{x:Reference __ReferenceID1}" ManualEntryFileFolderId="{x:Null}" UserEmail="{x:Null}" AccessUrl="[screenshotAccessUrl]" AuthScopesInvalid="False" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Share File or Folder" FileFolderExisting="[screenshotFileInGDrive]" FileFolderInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="ShareFileFolderConnections_1" Role="READER" SendNotificationEmail="False" ShareWith="ANYONE" UseConnectionService="True" UseDomainAdminAccess="False">
+                <uga:ShareFileFolderConnections.Item>
+                  <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[screenshotFileInGDrive]" InputMode="UseExisting">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="UseExisting">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                            <x:Null />
+                            <x:Null />
+                            <x:Null />
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                    <ugam:DriveItemArgument.FullPathHint>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ugam:DriveItemArgument.FullPathHint>
+                    <ugam:DriveItemArgument.ParentIdFullPathHint>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ugam:DriveItemArgument.ParentIdFullPathHint>
+                  </ugam:DriveItemArgument>
+                </uga:ShareFileFolderConnections.Item>
+              </uga:ShareFileFolderConnections>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" InformativeScreenshot="bcb386dfccb957350c818564c564d422.jpg" Selector="&lt;html title='USD / BRL 5.0963 (▲ 0.14%) United States Dollar / Brazilian Real | Google Finance' app='chrome.exe' /&gt;" Url="[&quot;https://www.google.com/finance/beta/quote/&quot;+ IndexNameAtUrl +&quot;?window=&quot; + Window]" Version="V3" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
   </Sequence>
 </Activity>

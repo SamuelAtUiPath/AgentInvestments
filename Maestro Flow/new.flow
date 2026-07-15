@@ -336,18 +336,9 @@
         ]
       },
       "inputDefinition": {
-        "type": "object",
-        "properties": {
-          "IndexAtURL": {
-            "type": "string"
-          },
-          "Window": {
-            "type": "string"
-          },
-          "IndexFileName": {
-            "type": "string"
-          }
-        }
+        "IndexAtURL": "text",
+        "Window": "text",
+        "IndexFileName": "text"
       },
       "inputDefaults": {
         "IndexAtURL": "",
@@ -466,6 +457,10 @@
       {
         "id": "getGoogleFinance1.output",
         "type": "object",
+        "binding": {
+          "nodeId": "getGoogleFinance1",
+          "outputId": "output"
+        },
         "schema": {
           "type": "object",
           "properties": {
@@ -511,15 +506,15 @@
               "x-uipath-resource-kind": "JobAttachment"
             }
           }
-        },
-        "binding": {
-          "nodeId": "getGoogleFinance1",
-          "outputId": "output"
         }
       },
       {
         "id": "getGoogleFinance1.error",
         "type": "object",
+        "binding": {
+          "nodeId": "getGoogleFinance1",
+          "outputId": "error"
+        },
         "schema": {
           "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
@@ -553,11 +548,6 @@
             }
           },
           "additionalProperties": false
-        },
-        "description": "Error information if the node fails",
-        "binding": {
-          "nodeId": "getGoogleFinance1",
-          "outputId": "error"
         }
       }
     ]

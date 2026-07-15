@@ -26,7 +26,7 @@
             <uipath:input name="name" type="string" value="=bindings.bB2qdIm5U" />
             <uipath:input name="folderPath" type="string" value="=bindings.bZP2riPnb" />
             <uipath:input name="_label" type="string" value="Get Google Finance" />
-            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"IndexAtURL":{"type":"string"},"Window":{"type":"string"},"IndexFileName":{"type":"string"}},"required":[]}]]></uipath:inputSchema>
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"IndexAtURL":{"type":"text"},"Window":{"type":"text"},"IndexFileName":{"type":"text"}},"required":[]}]]></uipath:inputSchema>
           </uipath:context>
           <uipath:input name="JobArguments" type="json" target="bodyField"><![CDATA[{}]]></uipath:input>
           <uipath:output name="getGoogleFinance1.output" type="object" source="=this" var="getGoogleFinance1.output" />
