@@ -11,7 +11,11 @@
  xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities"
  xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:upad="clr-namespace:UiPath.Platform.Activities.DataMapping;assembly=UiPath.Platform"
+ xmlns:upd="clr-namespace:UiPath.Platform.DataMapping;assembly=UiPath.Platform"
  xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities"
+ xmlns:usavsab="clr-namespace:UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Input.Bundle;assembly=Agent___Inflacao__co.ays2m3Oy7cP1hTrsKQXkpB3"
+ xmlns:usavsab1="clr-namespace:UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Output.Bundle;assembly=Agent___Inflacao__co.0Yyoj3a1F4S1DyLxj2u0BdK2"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Year" Type="InArgument(x:Int32)" />
@@ -21,11 +25,21 @@
     <InArgument x:TypeArguments="x:Int32" />
   </this:Main.Month>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="39">
-      <x:String>System.Activities</x:String>
+    <scg:List x:TypeArguments="x:String" Capacity="41">
       <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Activities</x:String>
       <x:String>System.Collections</x:String>
       <x:String>System</x:String>
+      <x:String>UiPath.GSuite.Docs.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Docs.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.Activities.System.Jobs</x:String>
       <x:String>UiPath.Core.Activities</x:String>
@@ -35,20 +49,10 @@
       <x:String>UiPath.Orchestrator.Client.Models</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
-      <x:String>UiPath.GSuite.Activities.Models</x:String>
-      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
-      <x:String>UiPath.GSuite.Drive.Models</x:String>
-      <x:String>UiPath.Platform.ResourceHandling</x:String>
-      <x:String>UiPath.Shared.Activities.Utils</x:String>
-      <x:String>UiPath.GSuite.Activities</x:String>
-      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
-      <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.Sdk.Activities</x:String>
       <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
       <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
       <x:String>UiPath.GSuite.Activities.Docs.Enums</x:String>
-      <x:String>UiPath.GSuite.Docs.Contracts</x:String>
-      <x:String>UiPath.GSuite.Activities.Docs.Activities</x:String>
       <x:String>System.Activities.Expressions</x:String>
       <x:String>System.Activities.Validation</x:String>
       <x:String>System.Activities.XamlIntegration</x:String>
@@ -61,10 +65,14 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>Newtonsoft.Json</x:String>
       <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Input.Bundle</x:String>
+      <x:String>UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Output.Bundle</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
+      <AssemblyReference>Agent___Inflacao__co.0Yyoj3a1F4S1DyLxj2u0BdK2</AssemblyReference>
+      <AssemblyReference>Agent___Inflacao__co.ays2m3Oy7cP1hTrsKQXkpB3</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -94,6 +102,14 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="analiseMercadoFile" />
       <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="operacoesFile" />
+      <Variable x:TypeArguments="usavsab1:Agent___Inflacao__content_agent_json_Output" Default="[new UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Output.Bundle.Agent___Inflacao__content_agent_json_Output]" Name="outputArguments">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">RunJob_1</x:String>
+            <x:String x:Key="SourcePropertyName">Output</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -115,22 +131,79 @@
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </uasj:RunJob.Arguments>
         <uasj:RunJob.Input>
-          <InArgument x:TypeArguments="x:Object" />
+          <InArgument x:TypeArguments="usavsab:Agent___Inflacao__content_agent_json_Input">
+            <upad:DataMappingPocoActivity x:TypeArguments="usavsab:Agent___Inflacao__content_agent_json_Input" sap2010:WorkflowViewState.IdRef="DataMappingPocoActivity`1_1" ParentPath="">
+              <upad:DataMappingPocoActivity.MappingInputs>
+                <scg:List x:TypeArguments="upd:MappingInput" Capacity="4">
+                  <upd:MappingInput PropertyName="month" PropertyType="x:String">
+                    <upd:MappingInput.Value>
+                      <InArgument x:TypeArguments="x:String">[Month.ToString]</InArgument>
+                    </upd:MappingInput.Value>
+                  </upd:MappingInput>
+                  <upd:MappingInput PropertyName="year" PropertyType="x:Int32">
+                    <upd:MappingInput.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Year]</InArgument>
+                    </upd:MappingInput.Value>
+                  </upd:MappingInput>
+                </scg:List>
+              </upad:DataMappingPocoActivity.MappingInputs>
+            </upad:DataMappingPocoActivity>
+          </InArgument>
         </uasj:RunJob.Input>
         <uasj:RunJob.Output>
-          <OutArgument x:TypeArguments="x:String" />
+          <OutArgument x:TypeArguments="usavsab1:Agent___Inflacao__content_agent_json_Output">[outputArguments]</OutArgument>
         </uasj:RunJob.Output>
       </uasj:RunJob>
+      <uga:FillDocsTemplateConnections AllFields="{x:Null}" BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID0}" ManualFileId="{x:Null}" TemplateFileFriendlyName="{x:Null}" TemplateFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Fill Analise - Macros" File="[analiseMercadoFile]" FileInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="FillDocsTemplateConnections_2" Symbol="{}{{ }}" UseConnectionService="True" WorkingWithTemplateDocument="False">
+        <uga:FillDocsTemplateConnections.Item>
+          <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" ConnectionKey="1082fa04-63dd-4b18-9e15-d4a441353ec0" Existing="[analiseMercadoFile]" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Análise de Mercado - MES/ANO" InputMode="UseExisting">
+            <ugam:DriveItemArgument.Backup>
+              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UseExisting">
+                <usau:BackupSlot.BackupValues>
+                  <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                    <InArgument x:TypeArguments="x:String">https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk</InArgument>
+                    <InArgument x:TypeArguments="x:String" />
+                    <InArgument x:TypeArguments="x:String">Análise de Mercado - MES/ANO</InArgument>
+                  </scg:List>
+                  <scg:List x:TypeArguments="x:Object" x:Key="UseExisting" Capacity="1">
+                    <x:Null />
+                  </scg:List>
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </ugam:DriveItemArgument.Backup>
+            <ugam:DriveItemArgument.ParentIdFullPathHint>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ugam:DriveItemArgument.ParentIdFullPathHint>
+          </ugam:DriveItemArgument>
+        </uga:FillDocsTemplateConnections.Item>
+        <uga:FillDocsTemplateConnections.MappedFields>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)">
+            <InArgument x:TypeArguments="x:String" x:Key="data_analise">[string.Format("{0}", DateTime.Now.ToString("yyyy-MM-dd"))]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="inflacao_acumulada_12m">[string.Format("{0}", outputArguments.ipca_accumulated_12_months_percent.ToString)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="inflacao_variacao_mensal">[string.Format("{0}", outputArguments.ipca_monthly_variation_percent.ToString)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="inflacao_analise">[string.Format("{0}", outputArguments.ipca_reasons_pt)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="SELIC">[string.Format("{0}", outputArguments.selic_annual_rate_percent)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="SELIC_variacao_mensal">[string.Format("{0}", outputArguments.selic_monthly_change_percent)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="SELIC_analise">[string.Format("{0}", outputArguments.selic_reasons_pt)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="juros_reais">[string.Format("{0}", outputArguments.real_interest_rate_percent)]</InArgument>
+          </scg:Dictionary>
+        </uga:FillDocsTemplateConnections.MappedFields>
+        <uga:FillDocsTemplateConnections.State>
+          <uga:ActivityState />
+        </uga:FillDocsTemplateConnections.State>
+      </uga:FillDocsTemplateConnections>
     </Sequence>
     <ui:CommentOut DisplayName="Disabled activities" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <Sequence DisplayName="Sequence 1" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <uga:FillDocsTemplateConnections AllFields="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileIdBackup="{x:Reference __ReferenceID0}" ManualFileId="{x:Null}" TemplateFileFriendlyName="{x:Null}" TemplateFileId="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Fill Document Template" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" sap2010:WorkflowViewState.IdRef="FillDocsTemplateConnections_1" Symbol="{}{{ }}" UseConnectionService="True" WorkingWithTemplateDocument="False">
+            <uga:FillDocsTemplateConnections AllFields="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileIdBackup="{x:Reference __ReferenceID1}" ManualFileId="{x:Null}" TemplateFileFriendlyName="{x:Null}" TemplateFileId="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Fill Document Template" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" sap2010:WorkflowViewState.IdRef="FillDocsTemplateConnections_1" Symbol="{}{{ }}" UseConnectionService="True" WorkingWithTemplateDocument="False">
               <uga:FillDocsTemplateConnections.Item>
                 <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionKey="1082fa04-63dd-4b18-9e15-d4a441353ec0" FriendlyName="Análise de Mercado - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Análise de Mercado - MES/ANO" InputMode="Browse">
                   <ugam:DriveItemArgument.Backup>
-                    <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+                    <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="Browse">
                       <usau:BackupSlot.BackupValues>
                         <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
                       </usau:BackupSlot.BackupValues>
@@ -157,11 +230,11 @@
                 <uga:ActivityState />
               </uga:FillDocsTemplateConnections.State>
             </uga:FillDocsTemplateConnections>
-            <uga:InsertImageConnections BrowserImageId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileIdBackup="{x:Reference __ReferenceID2}" Image="{x:Null}" ImageFriendlyName="{x:Null}" ImageIdBackup="{x:Reference __ReferenceID1}" ManualFileId="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Insert Image" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" sap2010:WorkflowViewState.IdRef="InsertImageConnections_1" ImageInputMode="UrlOrId" InsertImageMode="BeginningOfSection" ManualImageId="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9SGKdAjaGrIRl7kxHKFT6AWS5KUJ-jBH_JsXib36BA&amp;s=10" MatchCase="False" MatchMode="Contains" Section="índices" UseConnectionService="True">
+            <uga:InsertImageConnections BrowserImageId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileIdBackup="{x:Reference __ReferenceID3}" Image="{x:Null}" ImageFriendlyName="{x:Null}" ImageIdBackup="{x:Reference __ReferenceID2}" ManualFileId="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Insert Image" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" sap2010:WorkflowViewState.IdRef="InsertImageConnections_1" ImageInputMode="UrlOrId" InsertImageMode="BeginningOfSection" ManualImageId="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9SGKdAjaGrIRl7kxHKFT6AWS5KUJ-jBH_JsXib36BA&amp;s=10" MatchCase="False" MatchMode="Contains" Section="índices" UseConnectionService="True">
               <uga:InsertImageConnections.ImageItem>
                 <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" IdOrUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9SGKdAjaGrIRl7kxHKFT6AWS5KUJ-jBH_JsXib36BA&amp;s=10" InputMode="UrlOrId">
                   <ugam:DriveItemArgument.Backup>
-                    <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="UrlOrId">
+                    <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="UrlOrId">
                       <usau:BackupSlot.BackupValues>
                         <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
                           <x:Null />
@@ -186,7 +259,7 @@
               <uga:InsertImageConnections.Item>
                 <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" FriendlyName="Análise de Mercado - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Análise de Mercado - MES/ANO" InputMode="Browse">
                   <ugam:DriveItemArgument.Backup>
-                    <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="Browse">
+                    <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="Browse">
                       <usau:BackupSlot.BackupValues>
                         <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
                       </usau:BackupSlot.BackupValues>

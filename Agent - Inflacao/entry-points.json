@@ -44,11 +44,11 @@
         "properties": {
           "reference_month": {
             "type": "string",
-            "description": "The IPCA reference month used for the lookup, normalized as an English month name or two-digit month. Included for every result."
+            "description": "The IPCA reference month used for the lookup, normalized as an English month name or two-digit month. Included for every result. If the requested month was not yet available and the agent fell back to the previous month, this field reflects the fallback month actually used."
           },
           "reference_year": {
             "type": "integer",
-            "description": "The four-digit IPCA reference year used for the lookup. Included for every result."
+            "description": "The four-digit IPCA reference year used for the lookup. Included for every result. If the requested month was not yet available and the agent fell back to the previous month, this field reflects the year of the fallback month actually used (which may differ from the requested year if the fallback crosses a year boundary)."
           },
           "ipca_monthly_variation_percent": {
             "type": "number",

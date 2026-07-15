@@ -1,8 +1,26 @@
 {
   "version": "3.0.0.0",
-  "bundleHash": null,
+  "bundleHash": "NTr4hNqfEzJNK1f4twtOjmMBQelT74UaOwld4wq3Q",
   "addedAssemblyNames": [],
   "discardedAssemblyNames": [],
   "discardedAssemblyReplacements": {},
-  "assembliesJitInfo": {}
+  "assembliesJitInfo": {
+    "Agent___Inflacao__co.ays2m3Oy7cP1hTrsKQXkpB3": {
+      "createdAt": "2026-07-14T20:20:40.5061232+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Input.Bundle",
+      "typeNames": [
+        "Agent___Inflacao__content_agent_json_Input"
+      ]
+    },
+    "Agent___Inflacao__co.0Yyoj3a1F4S1DyLxj2u0BdK2": {
+      "createdAt": "2026-07-14T20:20:41.3118605+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Agent___Inflacao__content_agent_json_Output.Bundle",
+      "typeNames": [
+        "Agent___Inflacao__content_agent_json_Output",
+        "links_used"
+      ]
+    }
+  }
 }
