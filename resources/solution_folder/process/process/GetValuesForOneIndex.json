@@ -1,0 +1,44 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "GetValuesForOneIndex",
+    "kind": "process",
+    "type": "process",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "03111c1e-5747-4294-882f-9a38e651f9cb",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "GetValuesForOneIndex"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Process",
+      "name": "GetValuesForOneIndex",
+      "package": {
+        "key": "4defc813-70c3-49ad-a410-b3a789f53733"
+      },
+      "packageName": "Avaliador.de.indices.mensais.process.GetValuesForOneIndex",
+      "jobPriority": "Medium",
+      "jobRecording": "Disabled",
+      "targetFrameworkValue": "Portable",
+      "duration": 40,
+      "frequency": 500,
+      "quality": 100,
+      "remoteControlAccess": "None",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "8daf43f2-0141-48b5-bc93-f1a34992764b",
+    "files": []
+  }
+}

@@ -6,9 +6,14 @@
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib"
  xmlns:this="clr-namespace:"
  xmlns:ucas="clr-namespace:UiPath.Core.Activities.Storage;assembly=UiPath.System.Activities"
+ xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities"
+ xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities"
+ xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities"
+ xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:uix="http://schemas.uipath.com/workflow/activities/uix"
  xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform"
+ xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="IndexAtURL" Type="InArgument(x:String)" />
@@ -17,6 +22,7 @@
     <x:Property Name="WindowVariation" Type="OutArgument(x:Double)" />
     <x:Property Name="IndexFileName" Type="InArgument(x:String)" />
     <x:Property Name="screenshotFilePath" Type="OutArgument(x:String)" />
+    <x:Property Name="screenshotFileInGDrive" Type="OutArgument(ugdm:GDriveRemoteItem)" />
   </x:Members>
   <this:Main.IndexAtURL>
     <InArgument x:TypeArguments="x:String" />
@@ -28,26 +34,32 @@
     <InArgument x:TypeArguments="x:String" />
   </this:Main.IndexFileName>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="33">
+    <scg:List x:TypeArguments="x:String" Capacity="39">
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>System</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Activities</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
       <x:String>UiPath.UIAutomationNext</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
-      <x:String>System</x:String>
       <x:String>UiPath.UIAutomationNext.Models</x:String>
       <x:String>UiPath.UIAutomationNext.Activities</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Platform.SyncObjects</x:String>
-      <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
-      <x:String>System.Collections.Generic</x:String>
-      <x:String>System.Collections</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
-      <x:String>UiPath.Core.Activities</x:String>
-      <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.Core.Activities.Storage</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -65,7 +77,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -86,6 +98,8 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap:VirtualizedContainerService.HintSize="356,732" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -98,6 +112,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap2010:WorkflowViewState.IdRef="ManualTrigger_1" />
     <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome | Google Financ" HealingAgentBehavior="Job" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="364c249a-64ce-4e51-8ea5-16a691d571e9" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
@@ -134,11 +149,6 @@
               <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[rawNumbers]" />
             </Sequence>
             <Sequence DisplayName="Get Screenshot" sap2010:WorkflowViewState.IdRef="Sequence_4">
-              <uix:NTakeScreenshot DisplayName="Take Screenshot 'United States Dollar / …'" FileName="screenshot.png" FileNameMode="None" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTakeScreenshot_1" OutFile="[screenshotFile]" ScopeIdentifier="364c249a-64ce-4e51-8ea5-16a691d571e9" Version="V5">
-                <uix:NTakeScreenshot.Target>
-                  <uix:TargetAnchorable BrowserURL="google.com/finance/beta/quote/USD-BRL" DesignTimeRectangle="394, 128, 792, 404" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='DIV' class='JZvoCc' /&gt;" Guid="a6ae6288-f487-47e2-af58-6aa7f0916e23" InformativeScreenshot="882ffd1f06bb8cd4b00cb72025749942.jpg" ScopeSelectorArgument="&lt;html title='USD / BRL 5.0979 (▼ 1.00%) United States Dollar / Brazilian Real | Google Finance' app='chrome.exe' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                </uix:NTakeScreenshot.Target>
-              </uix:NTakeScreenshot>
               <Assign DisplayName="Assign - Screenshot File Path" sap2010:WorkflowViewState.IdRef="Assign_4">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[screenshotFilePath]</OutArgument>
@@ -147,7 +157,40 @@
                   <InArgument x:TypeArguments="x:String">["images/"+IndexFileName+"__"+Window+".png"]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ucas:UploadStorageFile Path="{x:Null}" TimeoutMS="{x:Null}" Destination="[path.GetDirectoryName(screenshotFilePath)]" DisplayName="Upload Storage File" FileName="[path.GetFileName(screenshotFilePath)]" FileResource="[screenshotFile]" sap2010:WorkflowViewState.IdRef="UploadStorageFile_1" StorageBucketName="Investments" />
+              <uix:NTakeScreenshot DisplayName="Take Screenshot 'United States Dollar / …'" FileName="[path.GetFileName(screenshotFilePath)]" FileNameMode="None" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NTakeScreenshot_1" OutFile="[screenshotFile]" ScopeIdentifier="364c249a-64ce-4e51-8ea5-16a691d571e9" Version="V5">
+                <uix:NTakeScreenshot.Target>
+                  <uix:TargetAnchorable BrowserURL="google.com/finance/beta/quote/USD-BRL" DesignTimeRectangle="394, 128, 792, 404" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='DIV' class='JZvoCc' /&gt;" Guid="a6ae6288-f487-47e2-af58-6aa7f0916e23" InformativeScreenshot="882ffd1f06bb8cd4b00cb72025749942.jpg" ScopeSelectorArgument="&lt;html title='USD / BRL 5.0979 (▼ 1.00%) United States Dollar / Brazilian Real | Google Finance' app='chrome.exe' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NTakeScreenshot.Target>
+              </uix:NTakeScreenshot>
+              <ucas:UploadStorageFile Path="{x:Null}" TimeoutMS="{x:Null}" Destination="path.GetDirectoryName(screenshotFilePath)" DisplayName="Upload Storage File" FileName="[path.GetFileName(screenshotFilePath)]" FileResource="[screenshotFile]" sap2010:WorkflowViewState.IdRef="UploadStorageFile_1" StorageBucketName="Investments" />
+              <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FilesList="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualFolderId="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/10yN1lS9GUV0h8XOuIQTtE2YgbibV8b-O" ConflictResolution="Replace" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByVariable" FirstResult="[screenshotFileInGDrive]" FolderInputMode="Browse" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_1" MultipleFilesToUpload="[Enumerable.Repeat(screenshotFile, 1).ToList()]" SaveToFolderName="Images" UseConnectionService="True">
+                <uga:UploadFilesConnections.FilesBackup>
+                  <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByVariable">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="ugade:FilesInputMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </uga:UploadFilesConnections.FilesBackup>
+                <uga:UploadFilesConnections.Folder>
+                  <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/10yN1lS9GUV0h8XOuIQTtE2YgbibV8b-O" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="Images" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Images" InputMode="Browse">
+                    <ugam:DriveItemArgument.Backup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </ugam:DriveItemArgument.Backup>
+                    <ugam:DriveItemArgument.DriveId>
+                      <InArgument x:TypeArguments="x:String" />
+                    </ugam:DriveItemArgument.DriveId>
+                    <ugam:DriveItemArgument.ParentIdFullPathHint>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ugam:DriveItemArgument.ParentIdFullPathHint>
+                  </ugam:DriveItemArgument>
+                </uga:UploadFilesConnections.Folder>
+              </uga:UploadFilesConnections>
             </Sequence>
           </Sequence>
         </ActivityAction>

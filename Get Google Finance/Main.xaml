@@ -5,6 +5,7 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib"
  xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common"
+ xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
@@ -116,7 +117,7 @@
                     <DelegateInArgument x:TypeArguments="x:String" Name="currentWindow" />
                   </ActivityAction.Argument>
                   <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="GetValuesForOneIndexInGoogleFinance.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="GetValuesForOneIndex.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="IndexAtURL">[string.Format("{0}", CurrentIndexRow("IndexAtURL").ToString)]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="Window">[currentWindow]</InArgument>
@@ -124,6 +125,7 @@
                         <OutArgument x:TypeArguments="x:Double" x:Key="WindowVariation">[WindowVariation]</OutArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="IndexFileName">[string.Format("{0}", CurrentIndexRow("IndexFileName").ToString)]</InArgument>
                         <OutArgument x:TypeArguments="x:String" x:Key="screenshotFilePath">[screenshotFilePath]</OutArgument>
+                        <OutArgument x:TypeArguments="ugdm:GDriveRemoteItem" x:Key="screenshotFileInGDrive" />
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[CurrentIndexRow(&quot;IndexFileName&quot;).ToString + &quot; &quot; + CurrentValue.ToString + &quot; &quot; + WindowVariation.ToString + &quot; at &quot; + currentWindow]" />

@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Maestro Flow",
+    "kind": "process",
+    "type": "flow",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "325f57eb-1c44-4bf3-89ad-b85a7bc289a0",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "Maestro Flow"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Flow",
+      "name": "Maestro Flow",
+      "package": {
+        "key": "e0968102-447e-4e40-a916-e6f456610499"
+      },
+      "packageName": "Avaliador.de.indices.mensais.flow.Maestro.Flow",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "7d6e15a0-d529-47dc-969e-18b90e750777",
+    "files": []
+  }
+}

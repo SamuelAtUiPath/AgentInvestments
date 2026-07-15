@@ -15,6 +15,16 @@
       "Id": "bc4c38e0-3031-468e-9ba8-d9d36250ec3f",
       "Type": "Process",
       "ProjectRelativePath": "Compose Report/project.uiproj"
+    },
+    {
+      "Id": "325f57eb-1c44-4bf3-89ad-b85a7bc289a0",
+      "Type": "Flow",
+      "ProjectRelativePath": "Maestro Flow/project.uiproj"
+    },
+    {
+      "Id": "03111c1e-5747-4294-882f-9a38e651f9cb",
+      "Type": "Process",
+      "ProjectRelativePath": "GetValuesForOneIndex/project.uiproj"
     }
   ]
 }

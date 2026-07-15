@@ -1,5 +1,5 @@
 {
   "Name": "Get Google Finance",
-  "ProjectType": "Process",
-  "MainFile": "Main.xaml"
+  "MainFile": "Main.xaml",
+  "ProjectType": "Process"
 }

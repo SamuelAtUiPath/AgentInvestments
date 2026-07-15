@@ -1,9 +1,15 @@
 {
   "version": "3.0.0.0",
-  "bundleHash": "NTr4hNqfEzJNK1f4twtOjmMBQelT74UaOwld4wq3Q",
+  "bundleHash": "L4txTctMs6Vnio84cCLZa0y6P7IpvzaflDxQ8GdXsYU",
   "addedAssemblyNames": [],
-  "discardedAssemblyNames": [],
-  "discardedAssemblyReplacements": {},
+  "discardedAssemblyNames": [
+    "Get_Google_Finance_G.qgKtm3UGsdQ10b1ZH2tYx4H",
+    "Get_Google_Finance_G.ypmmi1PMylG1Qq7JR3D4UaV1"
+  ],
+  "discardedAssemblyReplacements": {
+    "Get_Google_Finance_G.qgKtm3UGsdQ10b1ZH2tYx4H": "Get_Google_Finance_G.ypmmi1PMylG1Qq7JR3D4UaV1",
+    "Get_Google_Finance_G.ypmmi1PMylG1Qq7JR3D4UaV1": "Get_Google_Finance_G.sNnumdTc0D1kh3Fz24CsoK1"
+  },
   "assembliesJitInfo": {
     "Agent___Inflacao__co.ays2m3Oy7cP1hTrsKQXkpB3": {
       "createdAt": "2026-07-14T20:20:40.5061232+00:00",
@@ -20,6 +26,54 @@
       "typeNames": [
         "Agent___Inflacao__content_agent_json_Output",
         "links_used"
+      ]
+    },
+    "Get_Google_Finance_G.zLhqX2ppauP17UDO33BF7kM": {
+      "createdAt": "2026-07-15T14:32:28.7737388+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Input.Bundle",
+      "typeNames": [
+        "Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Input"
+      ]
+    },
+    "Get_Google_Finance_G.qgKtm3UGsdQ10b1ZH2tYx4H": {
+      "createdAt": "2026-07-15T14:32:29.6165511+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Output.Bundle",
+      "typeNames": [
+        "Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Output"
+      ]
+    },
+    "Get_Google_Finance_G.ypmmi1PMylG1Qq7JR3D4UaV1": {
+      "createdAt": "2026-07-15T14:42:50.4514428+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Output.Bundle",
+      "typeNames": [
+        "Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Output"
+      ]
+    },
+    "Get_Google_Finance_G.sNnumdTc0D1kh3Fz24CsoK1": {
+      "createdAt": "2026-07-15T14:55:53.7867542+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Output.Bundle",
+      "typeNames": [
+        "Get_Google_Finance_GetValuesForOneIndexInGoogleFinance_xaml_Output"
+      ]
+    },
+    "Get_Google_Finance_M.6EKCO3R6y3M1DqFCXjlOmw": {
+      "createdAt": "2026-07-15T15:41:12.3755498+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Get_Google_Finance_Main_xaml_Input.Bundle",
+      "typeNames": [
+        "Get_Google_Finance_Main_xaml_Input"
+      ]
+    },
+    "Get_Google_Finance_M.Pw8Kw7bZoB15W60V2PyWjJ": {
+      "createdAt": "2026-07-15T15:41:25.8711685+00:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Get_Google_Finance_Main_xaml_Output.Bundle",
+      "typeNames": [
+        "Get_Google_Finance_Main_xaml_Output"
       ]
     }
   }

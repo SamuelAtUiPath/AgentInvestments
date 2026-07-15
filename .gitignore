@@ -9,3 +9,4 @@ venv/
 .venv/
 __pycache__/
 **/.agent-builder/
+node_modules/

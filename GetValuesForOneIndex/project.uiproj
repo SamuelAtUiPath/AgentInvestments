@@ -1,0 +1,5 @@
+{
+  "Name": "GetValuesForOneIndex",
+  "ProjectType": "Process",
+  "MainFile": "Main.xaml"
+}

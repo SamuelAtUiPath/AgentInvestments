@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "GetValuesForOneIndex",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "03111c1e-5747-4294-882f-9a38e651f9cb",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "GetValuesForOneIndex"
+    },
+    "locks": [],
+    "key": "4defc813-70c3-49ad-a410-b3a789f53733",
+    "files": []
+  }
+}
