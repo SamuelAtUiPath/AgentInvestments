@@ -31,9 +31,11 @@
   </this:Main.Month>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
       <x:String>UiPath.GSuite.Activities.Models</x:String>
       <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
-      <x:String>System</x:String>
       <x:String>UiPath.GSuite.Drive.Models</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>System.Collections.Generic</x:String>
@@ -42,11 +44,9 @@
       <x:String>UiPath.GSuite.Activities</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
-      <x:String>System.Activities</x:String>
       <x:String>UiPath.GSuite.Activities.Docs.Enums</x:String>
       <x:String>UiPath.GSuite.Docs.Contracts</x:String>
       <x:String>UiPath.GSuite.Activities.Docs.Activities</x:String>
-      <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Data</x:String>
@@ -175,20 +175,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap2010:WorkflowViewState.IdRef="ManualTrigger_1" />
-    <ui:CommentOut DisplayName="Disabled activities 2" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_16">
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="InvokeWorkflowFile - Copy Files to Folder Month-Year" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CopyFilesToFolderMonthYear.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:Int32" x:Key="Year">[Year]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="Month">[Month]</InArgument>
-              <OutArgument x:TypeArguments="ugdm:GDriveRemoteItem" x:Key="analiseMercadoFile">[analiseMercadoFile]</OutArgument>
-              <OutArgument x:TypeArguments="ugdm:GDriveRemoteItem" x:Key="operacoesFile">[operacoesFile]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="InvokeWorkflowFile - Copy Files to Folder Month-Year" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CopyFilesToFolderMonthYear.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Int32" x:Key="Year">[Year]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="Month">[Month]</InArgument>
+        <OutArgument x:TypeArguments="ugdm:GDriveRemoteItem" x:Key="analiseMercadoFile">[analiseMercadoFile]</OutArgument>
+        <OutArgument x:TypeArguments="ugdm:GDriveRemoteItem" x:Key="operacoesFile">[operacoesFile]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Disabled activities" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_11">
@@ -266,48 +260,8 @@
       </ui:CommentOut.Body>
     </ui:CommentOut>
     <Sequence DisplayName="Fill Google Finances" sap2010:WorkflowViewState.IdRef="Sequence_6">
-      <uga:CopyFileConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" Folder="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" ManualFileId="{x:Null}" ManualFolderId="{x:Null}" NewFileName="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" BrowserFolderId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConflictResolution="AddSeparate" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Copy File" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" FolderFriendlyName="planos mensais de investimento" FolderInputMode="Browse" sap2010:WorkflowViewState.IdRef="CopyFileConnections_1" Result="[analiseMercadoFile]" UseConnectionService="True">
-        <uga:CopyFileConnections.Destination>
-          <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="planos mensais de investimento" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" InputMode="Browse">
-            <ugam:DriveItemArgument.Backup>
-              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="Browse">
-                <usau:BackupSlot.BackupValues>
-                  <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
-                </usau:BackupSlot.BackupValues>
-              </usau:BackupSlot>
-            </ugam:DriveItemArgument.Backup>
-            <ugam:DriveItemArgument.DriveId>
-              <InArgument x:TypeArguments="x:String" />
-            </ugam:DriveItemArgument.DriveId>
-            <ugam:DriveItemArgument.ParentIdFullPathHint>
-              <InArgument x:TypeArguments="x:String">
-                <Literal x:TypeArguments="x:String" Value="" />
-              </InArgument>
-            </ugam:DriveItemArgument.ParentIdFullPathHint>
-          </ugam:DriveItemArgument>
-        </uga:CopyFileConnections.Destination>
-        <uga:CopyFileConnections.FileIdBackup>
-          <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="Browse">
-            <usau:BackupSlot.BackupValues>
-              <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
-            </usau:BackupSlot.BackupValues>
-          </usau:BackupSlot>
-        </uga:CopyFileConnections.FileIdBackup>
-        <uga:CopyFileConnections.Item>
-          <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID2}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="Análise de Mercado - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Análise de Mercado - MES/ANO" InputMode="Browse">
-            <ugam:DriveItemArgument.DriveId>
-              <InArgument x:TypeArguments="x:String" />
-            </ugam:DriveItemArgument.DriveId>
-            <ugam:DriveItemArgument.ParentIdFullPathHint>
-              <InArgument x:TypeArguments="x:String">
-                <Literal x:TypeArguments="x:String" Value="" />
-              </InArgument>
-            </ugam:DriveItemArgument.ParentIdFullPathHint>
-          </ugam:DriveItemArgument>
-        </uga:CopyFileConnections.Item>
-      </uga:CopyFileConnections>
       <Sequence DisplayName="Get list of index" sap2010:WorkflowViewState.IdRef="Sequence_12">
-        <ui:GenerateDataTable ColumnSeparators="{x:Null}" ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" sap2010:Annotation.AnnotationText="&quot;IndexNameAtUrl,IndexName,Windows&#xA;IBOV:INDEXBVMF,IBOV,5D 1M 6M 1Y&#xA;USD-BRL,Dolar,5D 1M 6M 1Y&#xA;.INX:INDEXSP,SP500,5D 1M 6M 1Y&#xA;IFIX:INDEXBVMF,IFIX,5D 1M 6M 1Y&#xA;BTC-USD,BTC-USD,5D 1M 6M 1Y&quot;" CSVParsing="True" DataTable="[IndexesDataTable]" DisplayName="Generate Data Table From Text" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="IndexNameAtUrl,IndexName,Windows&#xA;IBOV:INDEXBVMF,IBOV,5D 1M 6M 1Y&#xA;USD-BRL,Dolar,5D 1M 6M 1Y" UseColumnHeader="True" />
+        <ui:GenerateDataTable ColumnSeparators="{x:Null}" ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" sap2010:Annotation.AnnotationText="&quot;IndexNameAtUrl,IndexName,Windows&#xA;IBOV:INDEXBVMF,IBOV,5D 1M 6M 1Y&#xA;USD-BRL,Dolar,5D 1M 6M 1Y&#xA;.INX:INDEXSP,SP500,5D 1M 6M 1Y&#xA;IFIX:INDEXBVMF,IFIX,5D 1M 6M 1Y&#xA;BTC-USD,BTC-USD,5D 1M 6M 1Y&quot;" CSVParsing="True" DataTable="[IndexesDataTable]" DisplayName="Generate Data Table From Text" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="IndexNameAtUrl,IndexName,Windows&#xA;IBOV:INDEXBVMF,IBOV,5D 1M 1Y&#xA;USD-BRL,Dolar,5D 1M 1Y&#xA;.INX:INDEXSP,SP500,5D 1M 1Y&#xA;IFIX:INDEXBVMF,IFIX,5D 1M 1Y&#xA;BTC-USD,BTC-USD,5D 1M 1Y" UseColumnHeader="True" />
       </Sequence>
       <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[IndexesDataTable]" DisplayName="For Each Row in Data Table" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
@@ -318,6 +272,7 @@
             <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start processing index: &quot; + CurrentIndexRow(&quot;IndexName&quot;).ToString]" />
               <Sequence DisplayName="Fill variation for this month" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <ui:LogMessage DisplayName="Log Message 2" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Start get this month&quot;]" />
                 <uasj:RunJob DisplayName="Run RPA: GetValuesForOneIndex" sap2010:WorkflowViewState.IdRef="RunJob_3" ProcessName="GetValuesForOneIndex">
                   <uasj:RunJob.Arguments>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
@@ -351,15 +306,16 @@
                     <OutArgument x:TypeArguments="usavsgb1:GetValuesForOneIndex_Main_xaml_Output">[outputArguments_Google1M]</OutArgument>
                   </uasj:RunJob.Output>
                 </uasj:RunJob>
+                <ui:LogMessage DisplayName="Log Message 3" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Finished getting this month&quot;]" />
                 <ui:Comment DisplayName="Comment" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// get analisys on the variation of this month" />
                 <ui:CommentOut DisplayName="Disabled activities 1" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                      <uga:FillDocsTemplateConnections AllFields="{x:Null}" BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID3}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Fill Document Template 1" File="[analiseMercadoFile]" FileInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="FillDocsTemplateConnections_3" Symbol="{}{{ }}" TemplateFileFriendlyName="Análise de Mercado - MES/ANO" TemplateFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" UseConnectionService="True" WorkingWithTemplateDocument="True">
+                      <uga:FillDocsTemplateConnections AllFields="{x:Null}" BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID1}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Fill Document Template 1" File="[analiseMercadoFile]" FileInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="FillDocsTemplateConnections_3" Symbol="{}{{ }}" TemplateFileFriendlyName="Análise de Mercado - MES/ANO" TemplateFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" UseConnectionService="True" WorkingWithTemplateDocument="True">
                         <uga:FillDocsTemplateConnections.Item>
                           <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[analiseMercadoFile]" InputMode="UseExisting">
                             <ugam:DriveItemArgument.Backup>
-                              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="UseExisting">
+                              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="UseExisting">
                                 <usau:BackupSlot.BackupValues>
                                   <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
                                     <x:Null />
@@ -397,11 +353,11 @@
                     </Sequence>
                   </ui:CommentOut.Body>
                 </ui:CommentOut>
-                <uga:FindAndReplaceTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID4}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Find and Replace Text - Current Value" File="[analiseMercadoFile]" FileInputMode="UseExisting" FindWhat="[&quot;{{&quot;+CurrentIndexRow(&quot;IndexName&quot;).ToString+&quot;}}&quot;]" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextConnections_1" MatchCase="True" ReplaceBehavior="AllReccurences" ReplaceWith="[string.Format(&quot;{0}&quot;, outputArguments_google1m.CurrentValue)]" UseConnectionService="True">
+                <uga:FindAndReplaceTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID2}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Find and Replace Text - Current Value" File="[analiseMercadoFile]" FileInputMode="UseExisting" FindWhat="[&quot;{{&quot;+CurrentIndexRow(&quot;IndexName&quot;).ToString+&quot;}}&quot;]" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextConnections_1" MatchCase="True" ReplaceBehavior="AllReccurences" ReplaceWith="[string.Format(&quot;{0}&quot;, outputArguments_google1m.CurrentValue)]" UseConnectionService="True">
                   <uga:FindAndReplaceTextConnections.Item>
                     <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[analiseMercadoFile]" InputMode="UseExisting">
                       <ugam:DriveItemArgument.Backup>
-                        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID4" StoredValue="UseExisting">
+                        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="UseExisting">
                           <usau:BackupSlot.BackupValues>
                             <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
                               <x:Null />
@@ -424,11 +380,11 @@
                     </ugam:DriveItemArgument>
                   </uga:FindAndReplaceTextConnections.Item>
                 </uga:FindAndReplaceTextConnections>
-                <uga:FindAndReplaceTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID5}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Find and Replace Text - Window Variation" File="[analiseMercadoFile]" FileInputMode="UseExisting" FindWhat="[&quot;{{&quot;+CurrentIndexRow(&quot;IndexName&quot;).ToString+&quot;_variacao_mensal}}&quot;]" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextConnections_2" MatchCase="True" ReplaceBehavior="AllReccurences" ReplaceWith="[string.Format(&quot;{0}&quot;, outputArguments_google1m.WindowVariation)]" UseConnectionService="True">
+                <uga:FindAndReplaceTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID3}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Find and Replace Text - Window Variation" File="[analiseMercadoFile]" FileInputMode="UseExisting" FindWhat="[&quot;{{&quot;+CurrentIndexRow(&quot;IndexName&quot;).ToString+&quot;_variacao_mensal}}&quot;]" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextConnections_2" MatchCase="True" ReplaceBehavior="AllReccurences" ReplaceWith="[string.Format(&quot;{0}&quot;, outputArguments_google1m.WindowVariation)]" UseConnectionService="True">
                   <uga:FindAndReplaceTextConnections.Item>
                     <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[analiseMercadoFile]" InputMode="UseExisting">
                       <ugam:DriveItemArgument.Backup>
-                        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID5" StoredValue="UseExisting">
+                        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="UseExisting">
                           <usau:BackupSlot.BackupValues>
                             <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
                               <x:Null />
@@ -452,6 +408,7 @@
                   </uga:FindAndReplaceTextConnections.Item>
                 </uga:FindAndReplaceTextConnections>
               </Sequence>
+              <ui:LogMessage DisplayName="Log Message 4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Going for windows&quot;]" />
               <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap:WorkflowViewStateService.ViewState="{x:Null}" DisplayName="For Each window - add images" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[CurrentIndexRow(&quot;Windows&quot;).ToString.Split(&quot; &quot;c)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
@@ -459,8 +416,8 @@
                       <DelegateInArgument x:TypeArguments="x:String" Name="currentWindow" />
                     </ActivityAction.Argument>
                     <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                      <ui:LogMessage DisplayName="Log Message 1" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Running window &quot; + currentWindow + &quot; for index &quot; + CurrentIndexRow(&quot;IndexName&quot;).ToString]" />
-                      <uasj:RunJob DisplayName="Run RPA: GetValuesForOneIndex" sap2010:WorkflowViewState.IdRef="RunJob_2" ProcessName="GetValuesForOneIndex">
+                      <ui:LogMessage DisplayName="Log Message 1" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Running window &quot; + currentWindow + &quot; for index &quot; + CurrentIndexRow(&quot;IndexName&quot;).ToString]" />
+                      <uasj:RunJob DisplayName="Run RPA: GetValuesForOneIndex" sap2010:WorkflowViewState.IdRef="RunJob_2" Machine="[Default] Cloud Robots - Serverless" ProcessName="GetValuesForOneIndex">
                         <uasj:RunJob.Arguments>
                           <scg:Dictionary x:TypeArguments="x:String, Argument" />
                         </uasj:RunJob.Arguments>
@@ -493,11 +450,12 @@
                           <OutArgument x:TypeArguments="usavsgb1:GetValuesForOneIndex_Main_xaml_Output">[outputArguments_google]</OutArgument>
                         </uasj:RunJob.Output>
                       </uasj:RunJob>
-                      <uga:InsertImageConnections BrowserFileId="{x:Null}" BrowserImageId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID7}" Image="{x:Null}" ImageFriendlyName="{x:Null}" ImageIdBackup="{x:Reference __ReferenceID6}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Insert Image 1" File="[analiseMercadoFile]" FileInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="InsertImageConnections_2" ImageInputMode="UrlOrId" InsertImageMode="EndOfSection" ManualImageId="[outputArguments_google.screenshotAccessUrl]" MatchCase="False" MatchMode="Equals" Section="[CurrentIndexRow(&quot;IndexName&quot;).ToString]" UseConnectionService="True">
+                      <ui:LogMessage DisplayName="Log Message 5" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;Got window&quot;]" />
+                      <uga:InsertImageConnections BrowserFileId="{x:Null}" BrowserImageId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID5}" Image="{x:Null}" ImageFriendlyName="{x:Null}" ImageIdBackup="{x:Reference __ReferenceID4}" ManualFileId="{x:Null}" AuthScopesInvalid="False" ConnectionId="1082fa04-63dd-4b18-9e15-d4a441353ec0" DisplayName="Insert Image 1" File="[analiseMercadoFile]" FileInputMode="UseExisting" sap2010:WorkflowViewState.IdRef="InsertImageConnections_2" ImageInputMode="UrlOrId" InsertImageMode="EndOfSection" ManualImageId="[outputArguments_google.screenshotAccessUrl]" MatchCase="False" MatchMode="Equals" Section="[CurrentIndexRow(&quot;IndexName&quot;).ToString]" UseConnectionService="True">
                         <uga:InsertImageConnections.ImageItem>
                           <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" IdOrUrl="[outputArguments_google.screenshotAccessUrl]" InputMode="UrlOrId">
                             <ugam:DriveItemArgument.Backup>
-                              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID6" StoredValue="UrlOrId">
+                              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID4" StoredValue="UrlOrId">
                                 <usau:BackupSlot.BackupValues>
                                   <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
                                     <x:Null />
@@ -528,7 +486,7 @@
                         <uga:InsertImageConnections.Item>
                           <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[analiseMercadoFile]" InputMode="UseExisting">
                             <ugam:DriveItemArgument.Backup>
-                              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID7" StoredValue="UseExisting">
+                              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID5" StoredValue="UseExisting">
                                 <usau:BackupSlot.BackupValues>
                                   <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
                                     <x:Null />

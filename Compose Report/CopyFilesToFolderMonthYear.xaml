@@ -26,24 +26,24 @@
   </this:Main.Month>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
-      <x:String>System.Collections.ObjectModel</x:String>
-      <x:String>System.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>System</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>System.Collections.Generic</x:String>
       <x:String>System.Collections</x:String>
-      <x:String>System.Activities.Statements</x:String>
-      <x:String>UiPath.GSuite.Activities.Models</x:String>
-      <x:String>System</x:String>
-      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
       <x:String>UiPath.GSuite.Activities</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Reflection</x:String>
       <x:String>UiPath.Sdk.Activities</x:String>
       <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
       <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
-      <x:String>UiPath.GSuite.Drive.Models</x:String>
-      <x:String>UiPath.Platform.ResourceHandling</x:String>
-      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
-      <x:String>UiPath.Shared.Activities.Utils</x:String>
-      <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Activities.Expressions</x:String>
       <x:String>System.Activities.Validation</x:String>
@@ -378,6 +378,46 @@
           </uga:CopyFileConnections.FileIdBackup>
           <uga:CopyFileConnections.Item>
             <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID6}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/spreadsheets/d/1dzusriM2dH8FkdisVpoLCi302ByinnuxOE66KQw3bnQ/edit?usp=drivesdk" ConnectionKey="c794e9bb-4ca6-406f-aec4-3aa184516fad" FriendlyName="Operações - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Operações - MES/ANO" InputMode="Browse">
+              <ugam:DriveItemArgument.DriveId>
+                <InArgument x:TypeArguments="x:String" />
+              </ugam:DriveItemArgument.DriveId>
+              <ugam:DriveItemArgument.ParentIdFullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.ParentIdFullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:CopyFileConnections.Item>
+        </uga:CopyFileConnections>
+        <uga:CopyFileConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" Folder="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID7}" ManualFileId="{x:Null}" ManualFolderId="{x:Null}" sap2010:Annotation.AnnotationText="TODO: 2026.07.17&#xA;This is a TEST to not run a new file every new executions.&#xA;This Should be removed later" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" BrowserFolderId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConflictResolution="Replace" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Copy File - TESTS" FileFriendlyName="Análise de Mercado - MES/ANO" FileInputMode="Browse" FolderFriendlyName="planos mensais de investimento" FolderInputMode="Browse" sap2010:WorkflowViewState.IdRef="CopyFileConnections_3" NewFileName="Tests" Result="[analiseMercadoFile]" UseConnectionService="True">
+          <uga:CopyFileConnections.Destination>
+            <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1JYxCnUPss74qWV9FJq2X2GW6NlnHbLR3" ConnectionKey="9a83f1f4-1c11-4bb1-8513-5dbe3233b929" FriendlyName="planos mensais de investimento" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento" InputMode="Browse">
+              <ugam:DriveItemArgument.Backup>
+                <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID7" StoredValue="Browse">
+                  <usau:BackupSlot.BackupValues>
+                    <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                  </usau:BackupSlot.BackupValues>
+                </usau:BackupSlot>
+              </ugam:DriveItemArgument.Backup>
+              <ugam:DriveItemArgument.DriveId>
+                <InArgument x:TypeArguments="x:String" />
+              </ugam:DriveItemArgument.DriveId>
+              <ugam:DriveItemArgument.ParentIdFullPathHint>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ugam:DriveItemArgument.ParentIdFullPathHint>
+            </ugam:DriveItemArgument>
+          </uga:CopyFileConnections.Destination>
+          <uga:CopyFileConnections.FileIdBackup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID8" StoredValue="Browse">
+              <usau:BackupSlot.BackupValues>
+                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </uga:CopyFileConnections.FileIdBackup>
+          <uga:CopyFileConnections.Item>
+            <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID8}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/document/d/16IOna6C5ao_UO7h3esYc88pER4uuY72MqW6f0CVwEvM/edit?usp=drivesdk" ConnectionKey="9a83f1f4-1c11-4bb1-8513-5dbe3233b929" FriendlyName="Análise de Mercado - MES/ANO" FullPathHint="My Drive/Financeiro/Investimentos/planos mensais de investimento/Análise de Mercado - MES/ANO" InputMode="Browse">
               <ugam:DriveItemArgument.DriveId>
                 <InArgument x:TypeArguments="x:String" />
               </ugam:DriveItemArgument.DriveId>
