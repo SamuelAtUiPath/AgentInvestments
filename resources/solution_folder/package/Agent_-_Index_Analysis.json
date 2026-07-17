@@ -1,10 +1,10 @@
 {
   "docVersion": "1.0.0",
   "resource": {
-    "name": "Get Google Finance",
+    "name": "Agent - Index Analysis",
     "kind": "package",
     "apiVersion": "orchestrator.uipath.com/v1",
-    "projectKey": "2fedaf85-3d23-4cc3-a3cf-9be5be403f64",
+    "projectKey": "4578eac3-aae8-4310-82ff-566533bb65c7",
     "dependencies": [],
     "runtimeDependencies": [],
     "folders": [
@@ -13,10 +13,10 @@
       }
     ],
     "spec": {
-      "name": "Get Google Finance"
+      "name": "Agent - Index Analysis"
     },
     "locks": [],
-    "key": "3b0bdca8-1fa8-4761-9d35-e3fd6294ef65",
+    "key": "7f6c516f-570d-4d8e-b953-3446fb1432b3",
     "files": []
   }
 }

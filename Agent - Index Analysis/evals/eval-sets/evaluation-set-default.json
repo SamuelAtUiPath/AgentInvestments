@@ -1,0 +1,72 @@
+{
+  "fileName": "evaluation-set-default.json",
+  "id": "5be0bef3-cfd7-4d1d-aa3b-4b7ce1438db4",
+  "name": "Default Evaluation Set",
+  "batchSize": 10,
+  "evaluatorRefs": [
+    "a0558992-d6ae-4423-b88c-0e7e45c1d57c"
+  ],
+  "evaluations": [
+    {
+      "id": "6fc0a791-eff6-4825-8352-528cada9944f",
+      "name": "Debug Run 7/17/2026, 2:02:10 PM",
+      "inputs": {
+        "indexName": "Ibov",
+        "googleFinanceUrlParam": "IBOV:INDEXBVMF",
+        "timeWindow": "1M",
+        "currentValue": "174397.25",
+        "variationInWindow": "3.53"
+      },
+      "expectedOutput": {
+        "analysisPtBr": "O Ibovespa registrou alta de +3,53% na janela de 1 mês encerrada em 17 de julho de 2026, atingindo 174.397,25 pontos. Esse movimento positivo ocorre em um contexto de recuperação após um período de forte pressão sobre o índice: dados de pesquisa indicam que o Ibovespa chegou a acumular quedas por 8 semanas consecutivas até meados de junho de 2026 — algo inédito em quase 30 anos —, o que sugere que a alta de 3,53% no último mês representa, em parte, um movimento técnico de recuperação (repique) após excesso de pessimismo precificado.\n\nOs fatores mais prováveis para a alta na janela de 1 mês são:\n\n1. **Recuperação técnica após oversold prolongado:** O índice havia sofrido queda acumulada expressiva até junho de 2026, criando condições técnicas para um repique de alívio com reentrada de investidores que aguardavam ponto de suporte.\n\n2. **Temporada de balanços do 2T26:** Resultados corporativos do segundo trimestre de 2026 começaram a ser divulgados em julho, com potencial de surpresas positivas em setores como bancos, commodities e varejo, impulsionando ações de maior peso no índice.\n\n3. **Dinâmica do Boletim Focus e expectativas de política monetária:** O Boletim Focus de julho de 2026 elevou projeções de inflação e Selic, o que, paradoxalmente, pode ter sido interpretado pelo mercado como sinal de que o ciclo de aperto monetário está próximo do fim, reduzindo a incerteza e favorecendo ativos de risco.\n\n4. **Fluxo estrangeiro e câmbio:** Historicamente, períodos de estabilização ou apreciação do real frente ao dólar tendem a atrair fluxo estrangeiro para a bolsa brasileira. A janela analisada pode ter se beneficiado de um ambiente externo mais favorável, com menor aversão a risco global.\n\n5. **Contexto macroeconômico acumulado em 2026:** O Ibovespa acumulava alta de +16,26% até abril de 2026, indicando que o mercado brasileiro manteve trajetória positiva no ano, com a alta de julho representando retomada após correção de maio/junho.\n\nÉ importante ressaltar que a causalidade exata entre os fatores acima e a variação de +3,53% não é diretamente comprovável apenas com os dados disponíveis, sendo os drivers acima os mais plausíveis com base nas evidências encontradas.",
+        "mainDrivers": [
+          "Recuperação técnica (repique) após queda acumulada por 8 semanas consecutivas até meados de junho de 2026",
+          "Início da temporada de balanços do 2T26 com potencial de resultados corporativos positivos",
+          "Reavaliação das expectativas de política monetária (Selic) com possível sinalização de topo do ciclo de aperto",
+          "Fluxo estrangeiro e estabilização cambial favorecendo ativos de risco brasileiros",
+          "Contexto de acumulado positivo em 2026 (+16,26% até abril), com a alta de julho representando retomada após correção"
+        ],
+        "evidenceSummary": "- Em 10 de junho de 2026, o Ibovespa havia acumulado quedas por 8 semanas consecutivas, evento inédito em quase 30 anos, criando base técnica para recuperação na janela de julho (fonte: LinkedIn/Thais Hossmann, jun/2026). - Em abril de 2026, o Ibovespa recuou -0,08%, com acumulado de +16,26% no ano (fonte: Instagram, mai/2026). - Em março de 2026, o índice recuou -0,70%, com acumulado de +16,35% no ano (fonte: Instagram, abr/2026). - Em julho de 2026 (data atual: 17/07/2026), o Boletim Focus elevou projeções de inflação e Selic para 2026, e a temporada de balanços do 2T26 estava em andamento (fonte: Instagram, jul/2026). - A janela de 1 mês (meados de junho a meados de julho de 2026) coincide com o período imediatamente após o fundo técnico do índice, explicando a alta de +3,53%.",
+        "sources": [
+          {
+            "title": "Publicação de Thais Hossmann - LinkedIn (jun/2026): Ibovespa caiu por 8 semanas seguidas",
+            "url": "https://pt.linkedin.com/posts/thaishossmann_o-ibovespa-caiu-por-8-semanas-seguidas-isso-activity-7470454398054436864-o-XK",
+            "relevance": "Evidencia o período de queda acumulada que antecedeu a recuperação observada na janela de 1 mês analisada."
+          },
+          {
+            "title": "Instagram - Índices de mercado abril 2026 (mai/2026)",
+            "url": "https://www.instagram.com/p/DX7n2S8kY19/",
+            "relevance": "Confirma o desempenho acumulado do Ibovespa em 2026 (+16,26% até abril) e a queda de -0,08% em abril, contextualizando o movimento de correção."
+          },
+          {
+            "title": "Instagram - Índices de mercado março 2026 (abr/2026)",
+            "url": "https://www.instagram.com/p/DWmvexOkXUq/",
+            "relevance": "Confirma recuo de -0,70% em março de 2026, parte do ciclo de correção que precedeu a alta de julho."
+          },
+          {
+            "title": "Instagram - Temporada de balanços 2T26 e Boletim Focus (jul/2026)",
+            "url": "https://www.instagram.com/p/Da5VXY5mlkG/",
+            "relevance": "Indica que em julho de 2026 o mercado monitorava juros, inflação e início da temporada de balanços do 2T26, fatores relevantes para a alta do Ibovespa na janela."
+          }
+        ],
+        "confidence": "médio",
+        "limitations": "1. A ferramenta de busca retornou resultados parciais e indiretos, sem fonte primária específica cobrindo exatamente a janela de 1 mês (meados de junho a 17 de julho de 2026) com dados detalhados do Ibovespa. 2. Não foram encontrados relatórios de mercado, comunicados do Banco Central ou dados de fluxo estrangeiro diretamente referentes à janela analisada. 3. Os drivers identificados são os mais plausíveis com base nas evidências disponíveis, mas a causalidade direta não pode ser comprovada sem acesso a dados intradiários, relatórios de corretoras ou comunicados oficiais do período. 4. Resultados de Instagram e LinkedIn foram usados como fontes secundárias por ausência de fontes primárias nos resultados retornados. 5. A variação exata de +3,53% não foi confirmada por fonte externa independente além do input do usuário."
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "evalSetId": "5be0bef3-cfd7-4d1d-aa3b-4b7ce1438db4",
+      "createdAt": "2026-07-17T17:02:10.606Z",
+      "updatedAt": "2026-07-17T17:02:10.606Z",
+      "source": "firstSuccessfulRun"
+    }
+  ],
+  "modelSettings": [],
+  "createdAt": "2026-07-17T15:37:16.315Z",
+  "updatedAt": "2026-07-17T17:02:10.606Z",
+  "agentMemoryEnabled": false,
+  "agentMemorySettings": [],
+  "lineByLineEvaluation": false
+}

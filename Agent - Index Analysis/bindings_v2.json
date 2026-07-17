@@ -1,0 +1,22 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "connection",
+      "key": "8b0d1a49-950b-469e-ba41-1d5e57f7262f",
+      "value": {
+        "connectionId": {
+          "defaultValue": "8b0d1a49-950b-469e-ba41-1d5e57f7262f",
+          "isExpression": false,
+          "displayName": "Connection ID"
+        }
+      },
+      "metadata": {
+        "connector": "uipath-uipath-airdk",
+        "useConnectionService": "true",
+        "bindingsVersion": "2.2",
+        "solutionsSupport": "true"
+      }
+    }
+  ]
+}

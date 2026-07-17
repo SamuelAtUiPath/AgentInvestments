@@ -1,6 +1,6 @@
 {
   "version": "3.0.0.0",
-  "bundleHash": "plbJfDXIjqb0CabtjAEIfqfQ6L1vWjMco4CHsd0ujs",
+  "bundleHash": "iQLORcOF3XVA8gD2DKnUboqYo9Bcyw3Rk5NgPgJTz0",
   "addedAssemblyNames": [],
   "discardedAssemblyNames": [
     "Get_Google_Finance_G.qgKtm3UGsdQ10b1ZH2tYx4H",
@@ -90,6 +90,23 @@
       "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.GetValuesForOneIndex_Main_xaml_Output.Bundle",
       "typeNames": [
         "GetValuesForOneIndex_Main_xaml_Output"
+      ]
+    },
+    "Agent___Index_Analys.WXwLV4CsNMB1A1mpa1PygYE2": {
+      "createdAt": "2026-07-17T14:09:19.9022931-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Agent___Index_Analysis__content_agent_json_Input.Bundle",
+      "typeNames": [
+        "Agent___Index_Analysis__content_agent_json_Input"
+      ]
+    },
+    "Agent___Index_Analys.UL2sAK6NtJ1NVmIS1g2Iq": {
+      "createdAt": "2026-07-17T14:09:20.2638274-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Agent___Index_Analysis__content_agent_json_Output.Bundle",
+      "typeNames": [
+        "Agent___Index_Analysis__content_agent_json_Output",
+        "sources"
       ]
     }
   }

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "32a62398-de9f-430c-8113-1e28b55fc396",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "required": [
+          "indexName",
+          "googleFinanceUrlParam",
+          "timeWindow",
+          "currentValue",
+          "variationInWindow"
+        ],
+        "properties": {
+          "indexName": {
+            "type": "string",
+            "description": "Nome do índice de mercado a ser analisado, por exemplo IBOVESPA, S&P 500, Nasdaq Composite, DAX, Nikkei 225."
+          },
+          "googleFinanceUrlParam": {
+            "type": "string",
+            "description": "Parâmetro/identificador usado no Google Finance para o índice, por exemplo INDEXBVMF:IBOV, INDEXSP:.INX, INDEXNASDAQ:.IXIC."
+          },
+          "timeWindow": {
+            "type": "string",
+            "description": "Janela de tempo da variação, por exemplo 1D, 5D, 1M, 6M, YTD, 1Y, 5Y ou MAX."
+          },
+          "currentValue": {
+            "type": "string",
+            "description": "Valor atual do índice conforme informado pelo chamador, preservando formato/localidade quando aplicável."
+          },
+          "variationInWindow": {
+            "type": "string",
+            "description": "Variação observada na janela informada, por exemplo +2,3%, -1,1%, +650 pontos, ou combinação de pontos e percentual."
+          }
+        }
+      },
+      "output": {
+        "type": "object",
+        "required": [
+          "analysisPtBr",
+          "mainDrivers",
+          "evidenceSummary",
+          "sources",
+          "confidence",
+          "limitations"
+        ],
+        "properties": {
+          "analysisPtBr": {
+            "type": "string",
+            "description": "Análise final em português do Brasil explicando os motivos mais prováveis da variação do índice na janela informada."
+          },
+          "mainDrivers": {
+            "type": "array",
+            "description": "Principais fatores identificados para a variação, em ordem de relevância.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidenceSummary": {
+            "type": "string",
+            "description": "Resumo das evidências encontradas na pesquisa, incluindo datas e contexto de mercado."
+          },
+          "sources": {
+            "type": "array",
+            "description": "Fontes consultadas ou citadas para fundamentar a análise.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Título ou nome da fonte."
+                },
+                "url": {
+                  "type": "string",
+                  "description": "URL da fonte quando disponível."
+                },
+                "relevance": {
+                  "type": "string",
+                  "description": "Como a fonte contribui para explicar a variação do índice."
+                }
+              }
+            }
+          },
+          "confidence": {
+            "type": "string",
+            "description": "Nível de confiança da análise: alto, médio ou baixo."
+          },
+          "limitations": {
+            "type": "string",
+            "description": "Limitações, lacunas de dados ou ressalvas importantes sobre a análise."
+          }
+        }
+      }
+    }
+  ]
+}

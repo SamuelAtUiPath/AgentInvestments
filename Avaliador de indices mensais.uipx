@@ -7,11 +7,6 @@
       "ProjectRelativePath": "Agent - Inflacao/project.uiproj"
     },
     {
-      "Id": "2fedaf85-3d23-4cc3-a3cf-9be5be403f64",
-      "Type": "Process",
-      "ProjectRelativePath": "Get Google Finance/project.uiproj"
-    },
-    {
       "Id": "bc4c38e0-3031-468e-9ba8-d9d36250ec3f",
       "Type": "Process",
       "ProjectRelativePath": "Compose Report/project.uiproj"
@@ -20,6 +15,11 @@
       "Id": "03111c1e-5747-4294-882f-9a38e651f9cb",
       "Type": "Process",
       "ProjectRelativePath": "GetValuesForOneIndex/project.uiproj"
+    },
+    {
+      "Id": "4578eac3-aae8-4310-82ff-566533bb65c7",
+      "Type": "Agent",
+      "ProjectRelativePath": "Agent - Index Analysis/project.uiproj"
     }
   ]
 }
