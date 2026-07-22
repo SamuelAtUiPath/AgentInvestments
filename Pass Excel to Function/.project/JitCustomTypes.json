@@ -1,0 +1,38 @@
+{
+  "version": "3.0.0.0",
+  "bundleHash": "FGZHJWiDq7vXAik23O3eoZ8KN2Ocee1XFHV1jSYhjxo",
+  "addedAssemblyNames": [],
+  "discardedAssemblyNames": [
+    "Function_main_Input.TYLgyRxaZM1frMoa31Rvkb1"
+  ],
+  "discardedAssemblyReplacements": {
+    "Function_main_Input.TYLgyRxaZM1frMoa31Rvkb1": "Function_main_Input.ocPTH32BsxJ1thJgHPlARC2"
+  },
+  "assembliesJitInfo": {
+    "Function_main_Input.TYLgyRxaZM1frMoa31Rvkb1": {
+      "createdAt": "2026-07-22T11:36:47.9207481-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Function_main_Input.Bundle",
+      "typeNames": [
+        "Function_main_Input",
+        "portifolio"
+      ]
+    },
+    "Function_main_Output.AtQYX2MVVyH14dw0ZQQadV2": {
+      "createdAt": "2026-07-22T11:36:48.0215489-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Function_main_Output.Bundle",
+      "typeNames": [
+        "Function_main_Output"
+      ]
+    },
+    "Function_main_Input.ocPTH32BsxJ1thJgHPlARC2": {
+      "createdAt": "2026-07-22T12:45:32.0194537-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Function_main_Input.Bundle",
+      "typeNames": [
+        "Function_main_Input"
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "Name": "Pass Excel to Function",
+  "ProjectType": "Process",
+  "MainFile": "Main.xaml"
+}

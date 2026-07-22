@@ -1,0 +1,60 @@
+{
+    "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id": "entry-points.json",
+    "entryPoints": [
+        {
+            "filePath": "main",
+            "uniqueId": "bd1e4572-67de-4411-b775-ec3a8764e016",
+            "type": "function",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string"
+                    },
+                    "portifolio": {
+                        "type": "string"
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "type": "object",
+                "properties": {
+                    "out": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "out"
+                ]
+            },
+            "graph": {
+                "nodes": [
+                    {
+                        "id": "main.py:43",
+                        "name": "main",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:35",
+                        "name": "convert_dataframe",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "main.py:43",
+                        "target": "main.py:35"
+                    }
+                ]
+            }
+        }
+    ]
+}

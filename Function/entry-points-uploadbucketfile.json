@@ -1,0 +1,92 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "main",
+      "uniqueId": "9ca26151-cf4f-4af9-a40c-0a027b019ec6",
+      "type": "function",
+      "name": "main",
+      "input": {
+        "type": "object",
+        "properties": {
+          "source_file_path": {
+            "type": "string",
+            "title": "Source File Path",
+            "description": "Local path of the file available to the function runtime"
+          },
+          "bucket_name": {
+            "type": "string",
+            "title": "Bucket Name",
+            "description": "UiPath Orchestrator storage bucket name where the file will be uploaded"
+          },
+          "folder_path": {
+            "type": "string",
+            "title": "Folder Path",
+            "description": "UiPath Orchestrator folder path where the storage bucket exists",
+            "default": ""
+          },
+          "bucket_directory": {
+            "type": "string",
+            "title": "Bucket Directory",
+            "description": "Optional directory path inside the storage bucket, for example monthly-reports",
+            "default": ""
+          },
+          "bucket_file_path": {
+            "type": "string",
+            "title": "Bucket File Path",
+            "description": "Optional exact destination path inside the bucket. When empty, the source file name is used.",
+            "default": ""
+          }
+        },
+        "required": [
+          "source_file_path",
+          "bucket_name"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "bucket_name": {
+            "type": "string",
+            "title": "Bucket Name",
+            "description": "UiPath Orchestrator storage bucket used for upload"
+          },
+          "bucket_file_path": {
+            "type": "string",
+            "title": "Bucket File Path",
+            "description": "Path of the uploaded file inside the storage bucket"
+          },
+          "source_file_path": {
+            "type": "string",
+            "title": "Source File Path",
+            "description": "Local path of the file uploaded"
+          },
+          "file_name": {
+            "type": "string",
+            "title": "File Name",
+            "description": "Uploaded source file name"
+          },
+          "file_size_bytes": {
+            "type": "integer",
+            "title": "File Size Bytes",
+            "description": "Size of the uploaded source file in bytes"
+          },
+          "content_type": {
+            "type": "string",
+            "title": "Content Type",
+            "description": "Detected MIME type for the source file"
+          }
+        },
+        "required": [
+          "bucket_name",
+          "bucket_file_path",
+          "source_file_path",
+          "file_name",
+          "file_size_bytes",
+          "content_type"
+        ]
+      }
+    }
+  ]
+}

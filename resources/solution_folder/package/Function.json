@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Function",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "0a90d40e-90dd-4ede-8b35-8a26285b24cb",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "Function"
+    },
+    "locks": [],
+    "key": "aad5cb3f-039d-4f68-a119-30bad6d15088",
+    "files": []
+  }
+}

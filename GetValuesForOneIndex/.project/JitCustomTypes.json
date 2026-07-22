@@ -1,8 +1,25 @@
 {
   "version": "3.0.0.0",
-  "bundleHash": null,
+  "bundleHash": "MQLQ0sGsq1B3oywZ6jN71WylPiuJcg7XE0vLAG9M0",
   "addedAssemblyNames": [],
   "discardedAssemblyNames": [],
   "discardedAssemblyReplacements": {},
-  "assembliesJitInfo": {}
+  "assembliesJitInfo": {
+    "Function_main_Input.Rfg673CjsvJ1cffzj5iJ3m2": {
+      "createdAt": "2026-07-22T09:49:36.0744302-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Function_main_Input.Bundle",
+      "typeNames": [
+        "Function_main_Input"
+      ]
+    },
+    "Function_main_Output.YThct2kaOTR1lPDGH4sWNWA4": {
+      "createdAt": "2026-07-22T09:49:36.2863176-03:00",
+      "providerName": "CustomEntities",
+      "rootNamespace": "UiPath.System.Activities.ViewModels.SWEntities.Function_main_Output.Bundle",
+      "typeNames": [
+        "Function_main_Output"
+      ]
+    }
+  }
 }

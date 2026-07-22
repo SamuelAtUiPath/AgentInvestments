@@ -20,6 +20,16 @@
       "Id": "4578eac3-aae8-4310-82ff-566533bb65c7",
       "Type": "Agent",
       "ProjectRelativePath": "Agent - Index Analysis/project.uiproj"
+    },
+    {
+      "Id": "0a90d40e-90dd-4ede-8b35-8a26285b24cb",
+      "Type": "Function",
+      "ProjectRelativePath": "Function/project.uiproj"
+    },
+    {
+      "Id": "4602fcb1-eadf-4469-a8b4-c5644c78a633",
+      "Type": "Process",
+      "ProjectRelativePath": "Pass Excel to Function/project.uiproj"
     }
   ]
 }

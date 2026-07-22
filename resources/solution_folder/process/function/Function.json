@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Function",
+    "kind": "process",
+    "type": "function",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "0a90d40e-90dd-4ede-8b35-8a26285b24cb",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "Function"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Function",
+      "name": "Function",
+      "package": {
+        "key": "aad5cb3f-039d-4f68-a119-30bad6d15088"
+      },
+      "packageName": "Avaliador.de.indices.mensais.function.Function",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "ccd8892e-4389-410b-a7d8-722faed026b6",
+    "files": []
+  }
+}

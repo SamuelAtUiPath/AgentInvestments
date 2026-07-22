@@ -1,0 +1,44 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Pass Excel to Function",
+    "kind": "process",
+    "type": "process",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "4602fcb1-eadf-4469-a8b4-c5644c78a633",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "Pass Excel to Function"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Process",
+      "name": "Pass Excel to Function",
+      "package": {
+        "key": "85e10a32-b54c-48c7-a68d-d5af295ef69d"
+      },
+      "packageName": "Avaliador.de.indices.mensais.process.Pass.Excel.to.Function",
+      "jobPriority": "Medium",
+      "jobRecording": "Disabled",
+      "targetFrameworkValue": "Portable",
+      "duration": 40,
+      "frequency": 500,
+      "quality": 100,
+      "remoteControlAccess": "None",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "aed38a2b-582c-4068-8f0a-5b98f749e0fc",
+    "files": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Pass Excel to Function",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "4602fcb1-eadf-4469-a8b4-c5644c78a633",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "Pass Excel to Function"
+    },
+    "locks": [],
+    "key": "85e10a32-b54c-48c7-a68d-d5af295ef69d",
+    "files": []
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "samuelsimao47@gmail.com_1",
+    "kind": "connection",
+    "type": "uipath-google-sheets",
+    "apiVersion": "integrationservice.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "connectorName": "Google Sheets",
+      "name": "samuelsimao47@gmail.com_1",
+      "authenticationType": "AuthenticateAfterDeployment",
+      "connectorVersion": "1.9.44",
+      "connectorKey": "uipath-google-sheets",
+      "pollingInterval": 5
+    },
+    "locks": [],
+    "key": "445adfae-bfdc-4255-aa26-a82c08611989",
+    "files": []
+  }
+}

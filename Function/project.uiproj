@@ -1,0 +1,6 @@
+{
+  "ProjectType": "Function",
+  "Name": "Function",
+  "Description": "A UiPath Function that uploads a local file to a storage bucket",
+  "MainFile": null
+}
