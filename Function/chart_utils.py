@@ -1,4 +1,5 @@
 import os
+from math import cos, radians, sin
 
 import matplotlib
 import pandas as pd
@@ -53,36 +54,77 @@ def _portfolio_title(category: str | None) -> str:
     return "Composi\u00e7\u00e3o do Portf\u00f3lio"
 
 
-def _placeholder_figure(title: str, center_text: str):
-    import plotly.graph_objects as go
+def _format_percent(value: float, total: float) -> str:
+    if total <= 0:
+        return "0%"
+    return f"{(value / total * 100):.3g}%"
 
-    fig = go.Figure()
-    fig.update_layout(
-        title=dict(
-            text=title,
-            x=0.025,
-            y=0.975,
-            xanchor="left",
-            font=dict(size=20, color=FONT_COLOR),
-        ),
-        paper_bgcolor=PAPER_BACKGROUND,
-        plot_bgcolor=CHART_BACKGROUND,
-        font=dict(color=FONT_COLOR, family="Arial"),
-        showlegend=False,
-        margin=dict(t=70, b=35, l=28, r=28),
-        width=1200,
-        height=700,
-        annotations=[
-            dict(
-                text=center_text or "Sem dados dispon\u00edveis",
-                x=0.5,
-                y=0.5,
-                showarrow=False,
-                font=dict(size=24, color=FONT_COLOR),
-                align="center",
-            )
-        ],
+
+def _base_chart(title: str):
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(12, 7), dpi=100)
+    fig.patch.set_facecolor(PAPER_BACKGROUND)
+    ax.set_facecolor(CHART_BACKGROUND)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    fig.text(
+        0.025,
+        0.965,
+        title,
+        color=FONT_COLOR,
+        fontsize=20,
+        fontfamily="Arial",
+        ha="left",
+        va="top",
     )
+    return fig, ax
+
+
+def _draw_center_text(ax, center_text: str):
+    lines = [line for line in (center_text or "").split("\n") if line]
+    if not lines:
+        return
+
+    if len(lines) == 1:
+        ax.text(
+            0,
+            0,
+            lines[0],
+            color=FONT_COLOR,
+            fontsize=24,
+            fontfamily="Arial",
+            ha="center",
+            va="center",
+        )
+        return
+
+    ax.text(
+        0,
+        0.035,
+        lines[0],
+        color=FONT_COLOR,
+        fontsize=24,
+        fontfamily="Arial",
+        fontweight="bold",
+        ha="center",
+        va="center",
+    )
+    ax.text(
+        0,
+        -0.085,
+        lines[1],
+        color=FONT_COLOR,
+        fontsize=24,
+        fontfamily="Arial",
+        ha="center",
+        va="center",
+    )
+
+
+def _placeholder_figure(title: str, center_text: str):
+    fig, ax = _base_chart(title)
+    _draw_center_text(ax, center_text or "Sem dados dispon\u00edveis")
     return fig
 
 
@@ -94,69 +136,43 @@ def build_donut_chart(
     center_text: str | None = None,
     colors: list[str] | None = None,
 ):
-    import plotly.graph_objects as go
-
     labels = df_plot[label_col].astype(str).tolist()
     values = df_plot[value_col].astype(float).tolist()
 
     if colors is None:
         colors = make_color_sequence(labels)
 
-    customdata = [[format_brl(value)] for value in values]
-
-    fig = go.Figure(
-        data=[
-            go.Pie(
-                labels=labels,
-                values=values,
-                hole=0.72,
-                sort=False,
-                direction="clockwise",
-                textposition="outside",
-                texttemplate="%{percent}<br>%{label}<br>%{customdata[0]}",
-                marker=dict(colors=colors, line=dict(color=CHART_BACKGROUND, width=7)),
-                hovertemplate=(
-                    "<b>%{label}</b><br>"
-                    "Valor: %{customdata[0]}<br>"
-                    "Percentual: %{percent}<extra></extra>"
-                ),
-                customdata=customdata,
-                pull=[0.025] * len(labels),
-            )
-        ]
+    fig, ax = _base_chart(title)
+    total = sum(values)
+    wedges, _texts = ax.pie(
+        values,
+        colors=colors,
+        startangle=90,
+        counterclock=False,
+        explode=[0.025] * len(labels),
+        radius=1.0,
+        wedgeprops=dict(width=0.28, edgecolor=CHART_BACKGROUND, linewidth=7),
     )
 
-    fig.update_traces(
-        textfont=dict(color=FONT_COLOR, size=13, family="Arial"),
-        insidetextfont=dict(color=FONT_COLOR, size=13, family="Arial"),
-    )
+    for wedge, label, value in zip(wedges, labels, values):
+        angle = (wedge.theta1 + wedge.theta2) / 2
+        x = 1.22 * cos(radians(angle))
+        y = 1.22 * sin(radians(angle))
+        horizontal_alignment = "left" if x >= 0 else "right"
+        ax.text(
+            x,
+            y,
+            f"{_format_percent(value, total)}\n{label}\n{format_brl(value)}",
+            color=FONT_COLOR,
+            fontsize=12,
+            fontfamily="Arial",
+            ha=horizontal_alignment,
+            va="center",
+        )
 
-    fig.update_layout(
-        title=dict(
-            text=title,
-            x=0.025,
-            y=0.975,
-            xanchor="left",
-            font=dict(size=20, color=FONT_COLOR),
-        ),
-        paper_bgcolor=PAPER_BACKGROUND,
-        plot_bgcolor=CHART_BACKGROUND,
-        font=dict(color=FONT_COLOR, family="Arial"),
-        showlegend=False,
-        margin=dict(t=70, b=35, l=28, r=28),
-        width=1200,
-        height=700,
-        annotations=[
-            dict(
-                text=center_text or "",
-                x=0.5,
-                y=0.5,
-                showarrow=False,
-                font=dict(size=24, color=FONT_COLOR),
-                align="center",
-            )
-        ],
-    )
+    _draw_center_text(ax, center_text or "")
+    ax.set_xlim(-1.55, 1.55)
+    ax.set_ylim(-1.2, 1.2)
     return fig
 
 
@@ -178,9 +194,10 @@ def create_donut_chart_png(
 
     df_plot = df.copy()
     if label_col not in df_plot.columns or value_col not in df_plot.columns:
-        center_text = f"<b>{category_text}</b>" if category_text else ""
+        center_text = category_text if category_text else ""
         fig = _placeholder_figure(title, center_text)
-        fig.write_image(image_path, scale=2)
+        fig.savefig(image_path, format="png", dpi=100, facecolor=fig.get_facecolor())
+        matplotlib.pyplot.close(fig)
         return image_path
 
     df_plot[value_col] = pd.to_numeric(df_plot[value_col], errors="coerce")
@@ -194,10 +211,10 @@ def create_donut_chart_png(
     total = df_plot[value_col].sum()
     center_lines = []
     if category_text:
-        center_lines.append(f"<b>{category_text}</b>")
+        center_lines.append(category_text)
     if total > 0:
         center_lines.append(format_brl(total))
-    center_text = "<br>".join(center_lines)
+    center_text = "\n".join(center_lines)
 
     if df_plot.empty or total <= 0:
         fig = _placeholder_figure(title, center_text or "Sem dados dispon\u00edveis")
@@ -210,7 +227,8 @@ def create_donut_chart_png(
             center_text=center_text,
         )
 
-    fig.write_image(image_path, scale=2)
+    fig.savefig(image_path, format="png", dpi=100, facecolor=fig.get_facecolor())
+    matplotlib.pyplot.close(fig)
     return image_path
 
 

@@ -8,6 +8,4 @@ dependencies = [
     "uipath>=1.0.0",
     "pandas>=2.2.0",
     "matplotlib>=3.9.0",
-    "plotly>=6.1.1",
-    "kaleido>=1.0.0",
 ]
