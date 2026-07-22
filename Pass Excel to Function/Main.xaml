@@ -22,33 +22,38 @@
     <x:Property Name="Category" Type="InArgument(x:String)" />
   </x:Members>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="45">
-      <x:String>System.Collections.Generic</x:String>
-      <x:String>UiPath.Core.Activities</x:String>
-      <x:String>System.Collections</x:String>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>System.Activities</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
       <x:String>System</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Filters</x:String>
+      <x:String>UiPath.GSuite.Activities.Filters</x:String>
+      <x:String>UiPath.GSuite.Drive.Enums</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Data</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
-      <x:String>System.Activities</x:String>
-      <x:String>System.Collections.ObjectModel</x:String>
-      <x:String>System.Activities.Statements</x:String>
       <x:String>UiPath.Activities.System.Jobs</x:String>
       <x:String>Microsoft.Rest</x:String>
       <x:String>UiPath.Orchestrator.Client.Models</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
       <x:String>UiPath.Excel</x:String>
-      <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
-      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
-      <x:String>UiPath.GSuite.Drive.Models</x:String>
-      <x:String>UiPath.Shared.Activities.Utils</x:String>
-      <x:String>UiPath.GSuite.Activities.Models</x:String>
-      <x:String>UiPath.GSuite.Activities</x:String>
-      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
-      <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.GSuite.Activities.Sheets.Enums</x:String>
       <x:String>UiPath.GSuite.Sheets.Enums</x:String>
       <x:String>UiPath.GSuite.Sheets.Models</x:String>
@@ -140,6 +145,14 @@
         </sap:WorkflowViewStateService.ViewState>
       </Variable>
       <Variable x:TypeArguments="x:String" Name="portifolio" />
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="fileOrFolder">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">GetFileFolderConnections_1</x:String>
+            <x:String x:Key="SourcePropertyName">Result</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -147,27 +160,57 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap2010:WorkflowViewState.IdRef="ManualTrigger_1" />
-    <uga:DownloadFileConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationPath="{x:Null}" File="{x:Null}" ManualEntryFileId="{x:Null}" ManualFileId="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/spreadsheets/d/1rAnZugpQys8qTcxEXyj6CAZa6wdcdmdZ/edit?usp=drivesdk&amp;ouid=110176069997762235066&amp;rtpof=true&amp;sd=true" ConflictResolution="Fail" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Download File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileFriendlyName="posicao-2026-03-09-18-55-07.xlsx" FileInputMode="Browse" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_1" NewResult="[file]" UseConnectionService="True">
-      <uga:DownloadFileConnections.FileIdBackup>
-        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
-          <usau:BackupSlot.BackupValues>
-            <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
-          </usau:BackupSlot.BackupValues>
-        </usau:BackupSlot>
-      </uga:DownloadFileConnections.FileIdBackup>
-      <uga:DownloadFileConnections.Item>
-        <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/spreadsheets/d/1rAnZugpQys8qTcxEXyj6CAZa6wdcdmdZ/edit?usp=drivesdk&amp;ouid=110176069997762235066&amp;rtpof=true&amp;sd=true" ConnectionKey="9a83f1f4-1c11-4bb1-8513-5dbe3233b929" FriendlyName="posicao-2026-03-09-18-55-07.xlsx" FullPathHint="My Drive/Colab Notebooks/04. Meus Projetos/Analise Minha Carteira/Dados/B3/posicao-2026-03-09-18-55-07.xlsx" InputMode="Browse">
-          <ugam:DriveItemArgument.DriveId>
-            <InArgument x:TypeArguments="x:String" />
-          </ugam:DriveItemArgument.DriveId>
-          <ugam:DriveItemArgument.ParentIdFullPathHint>
-            <InArgument x:TypeArguments="x:String">
-              <Literal x:TypeArguments="x:String" Value="" />
-            </InArgument>
-          </ugam:DriveItemArgument.ParentIdFullPathHint>
-        </ugam:DriveItemArgument>
-      </uga:DownloadFileConnections.Item>
-    </uga:DownloadFileConnections>
+    <Sequence DisplayName="Get latest B3 file" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <uga:GetFileFolderConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ExistingItem="{x:Null}" ManualEntryFileFolderFullPath="{x:Null}" ManualEntryFileFolderId="{x:Null}" ManualEntryFileFolderRelativePath="{x:Null}" ParentFileFolderFriendlyName="{x:Null}" ParentFileFolderId="{x:Null}" AuthScopesInvalid="False" BrowserFileFolderId="https://drive.google.com/drive/folders/121bkoCuKOzXU-tUUCvAbQkmC4otxXo3K" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Get File or Folder" FileFolderFriendlyName="B3" FileFolderInputMode="Browse" sap2010:WorkflowViewState.IdRef="GetFileFolderConnections_1" ItemInputMode="Browse" Result="[fileOrFolder]" UseConnectionService="True">
+        <uga:GetFileFolderConnections.FileFolderIdBackup>
+          <usau:BackupSlot x:TypeArguments="ugade:EDriveMode" StoredValue="{x:Null}">
+            <usau:BackupSlot.BackupValues>
+              <scg:Dictionary x:TypeArguments="ugade:EDriveMode, scg:List(x:Object)" />
+            </usau:BackupSlot.BackupValues>
+          </usau:BackupSlot>
+        </uga:GetFileFolderConnections.FileFolderIdBackup>
+        <uga:GetFileFolderConnections.Item>
+          <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/121bkoCuKOzXU-tUUCvAbQkmC4otxXo3K" ConnectionKey="9a83f1f4-1c11-4bb1-8513-5dbe3233b929" FriendlyName="B3" FullPathHint="My Drive/Colab Notebooks/04. Meus Projetos/Analise Minha Carteira/Dados/B3" InputMode="Browse">
+            <ugam:DriveItemArgument.Backup>
+              <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="Browse">
+                <usau:BackupSlot.BackupValues>
+                  <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </ugam:DriveItemArgument.Backup>
+            <ugam:DriveItemArgument.DriveId>
+              <InArgument x:TypeArguments="x:String" />
+            </ugam:DriveItemArgument.DriveId>
+            <ugam:DriveItemArgument.ParentIdFullPathHint>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ugam:DriveItemArgument.ParentIdFullPathHint>
+          </ugam:DriveItemArgument>
+        </uga:GetFileFolderConnections.Item>
+      </uga:GetFileFolderConnections>
+      <uga:DownloadFileConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationPath="{x:Null}" File="{x:Null}" ManualEntryFileId="{x:Null}" ManualFileId="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" BrowserFileId="https://docs.google.com/spreadsheets/d/1rAnZugpQys8qTcxEXyj6CAZa6wdcdmdZ/edit?usp=drivesdk&amp;ouid=110176069997762235066&amp;rtpof=true&amp;sd=true" ConflictResolution="Fail" ConnectionId="c794e9bb-4ca6-406f-aec4-3aa184516fad" DisplayName="Download File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileFriendlyName="posicao-2026-03-09-18-55-07.xlsx" FileInputMode="Browse" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_1" NewResult="[file]" UseConnectionService="True">
+        <uga:DownloadFileConnections.FileIdBackup>
+          <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+            <usau:BackupSlot.BackupValues>
+              <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+            </usau:BackupSlot.BackupValues>
+          </usau:BackupSlot>
+        </uga:DownloadFileConnections.FileIdBackup>
+        <uga:DownloadFileConnections.Item>
+          <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://docs.google.com/spreadsheets/d/1rAnZugpQys8qTcxEXyj6CAZa6wdcdmdZ/edit?usp=drivesdk&amp;ouid=110176069997762235066&amp;rtpof=true&amp;sd=true" ConnectionKey="9a83f1f4-1c11-4bb1-8513-5dbe3233b929" FriendlyName="posicao-2026-03-09-18-55-07.xlsx" FullPathHint="My Drive/Colab Notebooks/04. Meus Projetos/Analise Minha Carteira/Dados/B3/posicao-2026-03-09-18-55-07.xlsx" InputMode="Browse">
+            <ugam:DriveItemArgument.DriveId>
+              <InArgument x:TypeArguments="x:String" />
+            </ugam:DriveItemArgument.DriveId>
+            <ugam:DriveItemArgument.ParentIdFullPathHint>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ugam:DriveItemArgument.ParentIdFullPathHint>
+          </ugam:DriveItemArgument>
+        </uga:DownloadFileConnections.Item>
+      </uga:DownloadFileConnections>
+    </Sequence>
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[portifolio_datatable]" DisplayName="Read Range Workbook" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[Category]" WorkbookPathResource="[file]" />
     <Sequence DisplayName="prepare and convert Datatable to List[Dict]" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Assign DisplayName="Assign - Select columns" sap2010:WorkflowViewState.IdRef="Assign_2">

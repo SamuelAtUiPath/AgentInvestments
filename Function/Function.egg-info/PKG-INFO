@@ -1,7 +1,0 @@
-Metadata-Version: 2.4
-Name: Function
-Version: 1.0.0
-Summary: A UiPath Function that uploads a monthly stock variation PNG to a storage bucket
-Author-email: UiPath <contact@uipath.com>
-Requires-Python: >=3.11
-Requires-Dist: uipath>=1.0.0

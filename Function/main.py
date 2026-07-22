@@ -4,11 +4,14 @@ This function creates a chart from given data.
 
 import json
 import sys
-import pandas as pd
 
 from dataclasses import asdict, dataclass
 
 from uipath.tracing import traced
+
+from chart_utils import create_donut_chart_png
+from dataframe_utils import convert_dataframe
+from upload_utils import upload_file_to_bucket
 
 
 @dataclass
@@ -19,34 +22,18 @@ class Inputs:
 
 @dataclass
 class Outputs:
-    out: str
-
-# -----------------------
-# Functions
-
-@traced(name="converting input to data frame")
-def convert_dataframe(portifolio_json: str) -> pd.DataFrame:
-    portifolio_list = json.loads(portifolio_json) if portifolio_json else []
-    df = pd.DataFrame(portifolio_list)
-
-    expected_columns = ["Name", "Quantity", "Value"]
-    df = df.reindex(columns=expected_columns)
-
-    df["Quantity"] = pd.to_numeric(df["Quantity"], errors="coerce")
-    df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
-    df = df.dropna(subset=["Quantity", "Value"])
-
-    return df
+    bucket_file_path: str
 
 
 @traced(name="Main")
 def main(input: Inputs) -> Outputs:
 
     df = convert_dataframe(input.portifolio)
-    total = (df["Value"]).sum()
+    image_path = create_donut_chart_png(df, category=input.category)
+    bucket_file_path = upload_file_to_bucket(image_path, category=input.category)
 
     return Outputs(
-        out=str(total)
+        bucket_file_path=bucket_file_path
     )
 
 

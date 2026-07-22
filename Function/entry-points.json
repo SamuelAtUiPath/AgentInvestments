@@ -21,12 +21,12 @@
             "output": {
                 "type": "object",
                 "properties": {
-                    "out": {
+                    "bucket_file_path": {
                         "type": "string"
                     }
                 },
                 "required": [
-                    "out"
+                    "bucket_file_path"
                 ]
             },
             "graph": {

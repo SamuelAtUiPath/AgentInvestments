@@ -1,7 +1,0 @@
-main.py
-pyproject.toml
-Function.egg-info/PKG-INFO
-Function.egg-info/SOURCES.txt
-Function.egg-info/dependency_links.txt
-Function.egg-info/requires.txt
-Function.egg-info/top_level.txt
